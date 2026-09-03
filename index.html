@@ -348,6 +348,27 @@
     .bn-lb{font-size:10px;}
   }
 
+  .section-head{font-size:13px;color:var(--brass);margin:20px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--hairline);}
+  .verdict-block{background:var(--panel-raised);border:1px solid var(--hairline);border-radius:3px;padding:14px 16px;margin:8px 0 4px;}
+  .tq-row{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--hairline);color:var(--ink-dim);}
+  .tq-row:last-child{border-bottom:none;}
+  .tq-val{font-family:var(--display);white-space:nowrap;}
+  .tq-row.good .tq-val{color:var(--green);}
+  .tq-row.bad .tq-val{color:var(--rust-loud);}
+  .tq-row.warn .tq-val{color:var(--amber);}
+  .calc-answer.bad{color:var(--rust-loud);}
+  .calc-answer.warn{color:var(--amber);}
+  .calc-answer.good{color:var(--green);}
+  .margin-strip{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;color:var(--ink-dim);margin-bottom:12px;}
+  .margin-strip b{font-family:var(--display);color:var(--ink);}
+
+  .help h3{font-size:15px;margin:18px 0 6px;color:var(--brass);font-weight:500;}
+  .help h3:first-child{margin-top:0;}
+  .help p{font-size:14px;line-height:1.6;margin:0 0 10px;color:var(--ink-dim);}
+  .help b{color:var(--ink);font-weight:600;}
+  .help ol{margin:0 0 10px;padding-left:20px;}
+  .help li{font-size:14px;line-height:1.6;margin-bottom:6px;color:var(--ink-dim);}
+
   /* in-page confirm */
   .scrim{position:fixed;inset:0;background:rgba(8,11,15,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:50;}
   .scrim.open{display:flex;}
@@ -367,12 +388,11 @@
       <div class="brand-sub" id="save-stamp" style="color:var(--ink-faint);font-size:12px;"></div>
     </div>
     <nav class="tabs">
-      <button class="tab-btn active" data-tab="live">Live positions<span class="badge" id="live-badge" style="display:none;">0</span></button>
-      <button class="tab-btn" data-tab="dashboard">Dashboard</button>
-      <button class="tab-btn" data-tab="log">Trade log</button>
-      <button class="tab-btn" data-tab="new">New entry</button>
-      <button class="tab-btn" data-tab="review">Weekly review</button>
-      <button class="tab-btn" data-tab="rules">My rules</button>
+      <button class="tab-btn active" data-tab="live">Live<span class="badge" id="live-badge" style="display:none;">0</span></button>
+      <button class="tab-btn" data-tab="dashboard">Stats</button>
+      <button class="tab-btn" data-tab="new">Add trade</button>
+      <button class="tab-btn" data-tab="log">History</button>
+      <button class="tab-btn" data-tab="rules">Rules</button>
     </nav>
   </header>
 
@@ -381,7 +401,7 @@
   <nav class="botnav" id="botnav" aria-label="Sections">
     <button class="botnav-btn active" data-tab="live"><span class="bn-ic">&#9679;</span><span class="bn-lb">Live</span><span class="bn-badge" id="botnav-badge"></span></button>
     <button class="botnav-btn" data-tab="dashboard"><span class="bn-ic">&#9636;</span><span class="bn-lb">Stats</span></button>
-    <button class="botnav-btn" data-tab="new"><span class="bn-ic">&#43;</span><span class="bn-lb">Log</span></button>
+    <button class="botnav-btn" data-tab="new"><span class="bn-ic">&#43;</span><span class="bn-lb">Add trade</span></button>
     <button class="botnav-btn" data-tab="log"><span class="bn-ic">&#9776;</span><span class="bn-lb">History</span></button>
     <button class="botnav-btn" data-tab="rules"><span class="bn-ic">&#9881;</span><span class="bn-lb">Rules</span></button>
   </nav>
@@ -414,6 +434,15 @@
         </div>
       </div>
 
+      <div class="instrument-panel margin-panel" id="margin-panel" style="display:none;margin-bottom:14px;">
+        <div class="margin-strip">
+          <span>Margin blocked across open positions: <b id="mg-total">₹0</b></span>
+          <span id="mg-share"></span>
+        </div>
+        <div class="budget-track"><div class="budget-fill" id="mg-fill"></div></div>
+        <div class="budget-note" id="mg-note" style="margin-top:8px;"></div>
+      </div>
+
       <div class="instrument-panel tip-panel" id="tip-panel">
         <div class="tip-text" id="tip-text"></div>
         <div class="tip-foot">
@@ -438,13 +467,27 @@
             </div>
             <div class="field"><label for="p-instrument">Instrument</label><input type="text" id="p-instrument" placeholder="NIFTY, BANKNIFTY, ..."></div>
             <div class="field"><label for="p-size">Position size / lots</label><input type="text" id="p-size" placeholder="e.g. 2 lots"></div>
-            <div class="field"><label for="p-credit">Credit received (₹)</label><input type="number" inputmode="decimal" id="p-credit" step="any"></div>
-            <div class="field"><label for="p-structmax">Structure max loss from your platform (₹)</label><input type="number" inputmode="decimal" id="p-structmax" step="any" min="0" placeholder="what your platform shows">
-              <div class="hint">The theoretical worst case of the spread. This is a ceiling, not your stop.</div></div>
-            <div class="field"><label for="p-structmaxprofit">Max profit from your platform (₹)</label><input type="number" inputmode="decimal" id="p-structmaxprofit" step="any" min="0"></div>
-            <div class="field"><label for="p-prob">Probability of profit shown (%)</label><input type="number" inputmode="decimal" id="p-prob" step="any" min="0" max="100" placeholder="e.g. 68"></div>
-            <div class="field"><label for="p-exittime">Planned exit time or date (optional)</label><input type="time" id="p-exittime">
-              <div class="hint">Past this time the monitor flags you as holding too long.</div></div>
+          </div>
+
+          <div class="section-head">The four numbers your platform shows you</div>
+          <div class="form-grid">
+            <div class="field"><label for="p-margin">Required margin — SPAN + exposure (₹)</label><input type="number" inputmode="decimal" id="p-margin" step="any" min="0" placeholder="e.g. 120000">
+              <div class="hint">Capital blocked, not capital at risk. On a defined-risk spread this is usually many times your max loss.</div></div>
+            <div class="field"><label for="p-maxprofit">Max profit, which is your net credit (₹)</label><input type="number" inputmode="decimal" id="p-maxprofit" step="any" min="0" placeholder="e.g. 18850">
+              <div class="hint">Total rupees for your lot count, not points per unit.</div></div>
+            <div class="field"><label for="p-structmax">Max loss (₹)</label><input type="number" inputmode="decimal" id="p-structmax" step="any" min="0" placeholder="e.g. 7150">
+              <div class="hint">The theoretical worst case of the structure. A ceiling, not your stop.</div></div>
+            <div class="field"><label for="p-prob">Probability of profit (%)</label><input type="number" inputmode="decimal" id="p-prob" step="any" min="0" max="100" placeholder="e.g. 68">
+              <div class="hint">Whatever your platform labels POP or chance of profit.</div></div>
+          </div>
+
+          <div class="verdict-block">
+            <div class="calc-head">
+              <div class="calc-title">Is this trade worth taking?</div>
+              <div class="calc-answer" id="tq-headline">—</div>
+            </div>
+            <div id="tq-rows"></div>
+            <div class="calc-note" id="tq-note"></div>
           </div>
 
           <div class="calc-block">
@@ -460,11 +503,14 @@
             </div>
           </div>
 
+          <div class="section-head">Your plan for this trade</div>
           <div class="form-grid">
             <div class="field"><label for="p-maxloss">Stop — max loss you will accept (₹)</label><input type="number" inputmode="decimal" id="p-maxloss" step="any" min="0" placeholder="e.g. 2100">
               <div class="hint">Positive number. Leave blank and the position logs as undefined-risk from the start.</div></div>
             <div class="field"><label for="p-target">Profit target (₹)</label><input type="number" inputmode="decimal" id="p-target" step="any" min="0" placeholder="e.g. 1400">
               <div class="hint">Set this too. Without a target you book winners on feel, which is half of the problem.</div></div>
+            <div class="field"><label for="p-exittime">Planned exit time (optional)</label><input type="time" id="p-exittime">
+              <div class="hint">Past this time the monitor flags you as holding too long.</div></div>
             <div class="field full"><label for="p-exitrule">Exit rule, in your own words</label><input type="text" id="p-exitrule" placeholder="Close at ₹1,400 profit or ₹2,100 loss, or by 2:45 pm — whichever comes first"></div>
           </div>
           <div class="checklist-block">
@@ -566,6 +612,27 @@
           <div class="empty-note" id="flagged-empty" style="display:none;">None so far. Keep it that way.</div>
         </div>
       </div>
+
+      <details class="data-block" id="review-block">
+        <summary>Weekly review — write down what the week actually showed you</summary>
+        <div class="data-inner">
+      <form id="review-form" style="margin-bottom:22px;">
+        <div class="form-grid">
+          <div class="field"><label for="r-date">Week of</label><input type="date" id="r-date" required></div>
+        </div>
+        <div class="field full" style="margin-bottom:12px;">
+          <label for="r-text">Weekly reflection</label>
+          <textarea id="r-text" style="min-height:110px;" placeholder="What pattern showed up this week? Which trades were system trades and which were experiments? Where did the checklist save you, and where did you skip it?" required></textarea>
+        </div>
+        <button type="submit" class="btn">Save reflection</button>
+      </form>
+      <div class="instrument-panel">
+        <div class="panel-title">Past reflections</div>
+        <div id="review-list"></div>
+        <div class="empty-note" id="review-empty" style="display:none;">No reflections yet.</div>
+      </div>
+        </div>
+      </details>
     </section>
 
     <!-- TRADE LOG -->
@@ -642,7 +709,7 @@
           </div>
           <div class="field"><label for="f-instrument">Instrument</label><input type="text" id="f-instrument" placeholder="NIFTY, BANKNIFTY, ..."></div>
           <div class="field"><label for="f-size">Position size / lots</label><input type="text" id="f-size" placeholder="e.g. 2 lots"></div>
-          <div class="field"><label for="f-premium">Premium or credit received (₹)</label><input type="number" inputmode="decimal" id="f-premium" step="any"></div>
+          <div class="field"><label for="f-premium">Net credit received (₹ total)</label><input type="number" inputmode="decimal" id="f-premium" step="any" placeholder="total rupees, not points"></div>
           <div class="field"><label for="f-maxloss">Max planned loss (₹)</label><input type="number" inputmode="decimal" id="f-maxloss" step="any"></div>
           <div class="field full"><label for="f-exitplan">Exit condition, written before you entered</label><input type="text" id="f-exitplan" placeholder="e.g. exit if loss crosses ₹8,000 or 2 hours before expiry"></div>
         </div>
@@ -681,27 +748,66 @@
       </form>
     </section>
 
-    <!-- WEEKLY REVIEW -->
-    <section id="tab-review" class="tab-panel">
-      <form id="review-form" style="margin-bottom:22px;">
-        <div class="form-grid">
-          <div class="field"><label for="r-date">Week of</label><input type="date" id="r-date" required></div>
-        </div>
-        <div class="field full" style="margin-bottom:12px;">
-          <label for="r-text">Weekly reflection</label>
-          <textarea id="r-text" style="min-height:110px;" placeholder="What pattern showed up this week? Which trades were system trades and which were experiments? Where did the checklist save you, and where did you skip it?" required></textarea>
-        </div>
-        <button type="submit" class="btn">Save reflection</button>
-      </form>
-      <div class="instrument-panel">
-        <div class="panel-title">Past reflections</div>
-        <div id="review-list"></div>
-        <div class="empty-note" id="review-empty" style="display:none;">No reflections yet.</div>
-      </div>
-    </section>
 
     <!-- MY RULES -->
     <section id="tab-rules" class="tab-panel">
+      <details class="data-block" style="border-top:none;padding-top:0;margin-top:0;margin-bottom:16px;">
+        <summary>How to use this — read once, then forget it</summary>
+        <div class="data-inner help">
+          <h3>The two-tab idea</h3>
+          <p><b>Live</b> is the present tense: positions open right now, checked against the rules you set when you opened them. <b>History</b> is the past tense: trades that are finished. A position lives in Live, then crosses over into History when you close it.</p>
+          <p><b>Opening a position in Live does not log anything.</b> Nothing enters your history until you tap <b>Close &amp; log</b> and then submit the form. Two steps, because only you know your actual exit fill. What is carried over automatically is the part you might otherwise soften: the checklist as you recorded it at open, and whether the position ever crossed your stop.</p>
+
+          <h3>Before you place the trade</h3>
+          <ol>
+            <li>Build the position in your broker but do not send the order yet.</li>
+            <li>Open <b>Live</b> here. Fill in strategy, instrument, lots.</li>
+            <li>Copy the four numbers off your platform: <b>required margin</b>, <b>max profit</b>, <b>max loss</b>, <b>probability of profit</b>. All in total rupees for your lot count.</li>
+            <li>Read the stop the calculator gives you and tap <b>Use this as my stop</b>.</li>
+            <li>Set a <b>profit target</b> too. Without one you will book winners on feel.</li>
+            <li>Now read <b>Is this trade worth taking?</b> If it says Negative, the trade loses money over a run even if you follow every rule. Skip it or change the numbers.</li>
+            <li>Write the exit rule in your own words. Answer the two toggles honestly.</li>
+            <li>Check the line under the button. If it says the position opens in violation, fix that before you send the order, not after.</li>
+            <li>Tap <b>Open position</b>. Now send the order in your broker.</li>
+          </ol>
+
+          <h3>While the trade is live</h3>
+          <ol>
+            <li>Tap <b>Enable sound &amp; alerts</b> once per session so the chime works.</li>
+            <li>When the timer runs out, glance at your broker and type the amount.</li>
+            <li>Tap <b>Down ₹</b> if you are losing, <b>Up ₹</b> if you are winning. The button carries the sign, so you never need a minus key.</li>
+            <li>Read the verdict. Green means do nothing. Amber means decide now. Red means you are outside your own rules and a clock is running.</li>
+          </ol>
+
+          <h3>Closing</h3>
+          <ol>
+            <li>Close the position in your broker first.</li>
+            <li>Tap <b>Close &amp; log</b> here. The form arrives pre-filled and locked.</li>
+            <li>Set Outcome, type the final amount as a plain number, add a note about what you felt.</li>
+            <li>Tap <b>Close and log this trade</b>.</li>
+          </ol>
+          <p>Changed your mind? <b>Keep the position open</b> backs out and leaves everything untouched.</p>
+
+          <h3>What each screen is for</h3>
+          <p><b>Live</b> — positions open right now. Where you open a trade, check in on it, and close it. Nothing here is in your history yet.</p>
+          <p><b>Stats</b> — what your finished trades add up to. Rule adherence first, because it predicts survival better than profit. Loss budget, one bar per trade, discipline curve, asymmetry, recent rule breaks, and your weekly review at the bottom. The running P&amp;L total is deliberately collapsed.</p>
+          <p><b>Add trade</b> — the entry form. It fills itself when you close a position from Live, so you rarely open it yourself. Use it directly only for a trade you never monitored live, or one you are entering from memory.</p>
+          <p><b>History</b> — every finished trade, newest first. Tap one to expand it. Backups live at the bottom.</p>
+          <p><b>Rules</b> — capital, risk caps, margin cap, holding window, budget, and this guide. Set it once when you are calm.</p>
+
+          <h3>Margin is not risk</h3>
+          <p>SPAN plus exposure margin is the capital your broker blocks. On a defined-risk spread it is often ten or twenty times the most you can lose. Both matter, differently: <b>max loss</b> caps what a trade can cost you, <b>margin</b> caps how many trades you can hold at once. The strip at the top of Live shows how much of your capital is currently tied up.</p>
+
+          <h3>Breakeven win rate</h3>
+          <p>Your stop and target together decide what win rate you need: stop divided by stop plus target. A 2,100 stop with a 1,400 target needs 60%. Widen the stop to 4,500 and you suddenly need 76%, which is more than most platforms will give you — so the same entry becomes a losing trade purely through the exit rule. This is why the stop is not a detail.</p>
+
+          <h3>Reading the charts without flinching</h3>
+          <p>Colour means rule-following, not profit. A loss taken at your stop is slate grey and sits inside the shaded band: contained, as designed. Only genuine rule breaks are red. Each trade is its own bar, so there is no streak to protect and no chain to break. A loss booked correctly leaves the discipline curve untouched.</p>
+
+          <h3>Keeping your data</h3>
+          <p>Everything saves automatically in this browser on this device. It is never uploaded anywhere. Clearing your browsing data will erase it, so once a month open <b>History → Your data → Download a backup</b> and keep the file somewhere else. That file is also how you move your journal to another phone or computer.</p>
+        </div>
+      </details>
       <div class="instrument-panel" style="margin-bottom:14px;">
         <div class="panel-title">Set these once, when you are calm. The calculator uses them on every position.</div>
         <div class="form-grid">
@@ -713,6 +819,8 @@
             <div class="hint">At 1.5, no single loss can erase more than one and a half average wins. This is the cap that directly counters the asymmetry you described.</div></div>
           <div class="field"><label for="s-creditmult">Stop as a multiple of credit received</label><input type="number" inputmode="decimal" id="s-creditmult" step="any" min="0" value="1.5">
             <div class="hint">A common convention among premium sellers. At 1.5, you close once the position has lost one and a half times what you collected.</div></div>
+          <div class="field"><label for="s-marginpct">Max share of capital one trade may block (%)</label><input type="number" inputmode="decimal" id="s-marginpct" step="any" min="0" max="100" value="40">
+            <div class="hint">SPAN margin blocks far more capital than a defined-risk trade can lose. Capping it keeps room for a second position and stops a single trade from owning your account.</div></div>
           <div class="field"><label for="s-monthbudget">Monthly loss budget (₹, optional)</label><input type="number" inputmode="decimal" id="s-monthbudget" step="any" min="0" placeholder="leave blank to derive it">
             <div class="hint">The total loss you have decided is a normal cost of doing this each month. Leave blank and it is set to five times your per-trade stop. A loss inside this budget is the system working, not a setback.</div></div>
           <div class="field"><label for="s-maxdaily">Daily loss limit (₹, optional)</label><input type="number" inputmode="decimal" id="s-maxdaily" step="any" min="0" placeholder="e.g. 4000">
@@ -755,7 +863,7 @@
 <script>
 (function(){
   let trades=[], reviews=[], positions=[], editingId=null, pendingLocked=null, storageOK=true;
-  const DEFAULT_SETTINGS={capital:null,riskPct:2,winMult:1.5,creditMult:1.5,maxDaily:null,holdWindow:'same-day',checkInMinutes:5,monthlyBudget:null};
+  const DEFAULT_SETTINGS={capital:null,riskPct:2,winMult:1.5,creditMult:1.5,maxDaily:null,holdWindow:'same-day',checkInMinutes:5,monthlyBudget:null,maxMarginPct:40};
   let settings={...DEFAULT_SETTINGS};
   const $=(id)=>document.getElementById(id);
   const esc=(s)=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1205,7 +1313,7 @@
   // ---------- render: live ----------
   function renderLive(){
     refreshBreachState();
-    renderTimer();renderTip(false);
+    renderTimer();renderMarginPanel();renderTip(false);
     const wrap=$('open-positions');
     $('live-empty').style.display=positions.length?'none':'block';
     const badge=$('live-badge');
@@ -1370,11 +1478,12 @@
     $('f-strategy').value=p.strategy;
     $('f-instrument').value=p.instrument||'';
     $('f-size').value=p.positionSize||'';
-    $('f-premium').value=p.credit??'';
+    $('f-premium').value=(p.maxProfit??p.credit)??'';
     $('f-maxloss').value=p.maxLoss??'';
     $('f-exitplan').value=p.exitRule||'';
     pendingLocked.target=p.target||null;
     pendingLocked.structMax=p.structMax||null;
+    pendingLocked.margin=p.margin||null;
     pendingLocked.probOfProfit=p.probOfProfit??null;
     $('c-maxloss').checked=!!p.maxLoss;
     $('c-exit').checked=!!p.exitRule;
@@ -1392,6 +1501,9 @@
       ? `Carried over from the monitor: this position went outside the rules you set at open — ${breachLabel({breached:true,breachSeconds:breachSeconds})}. That happened whatever the final number says, so this logs as a rule break. The checklist is filled from what you recorded at open, not from how it feels now.`
       : 'Carried over from the monitor: the checklist below is filled from what you recorded at open, not from how it feels now.';
     checklistPreview();
+    $('btn-cancel-edit').textContent='Keep the position open';
+    $('btn-cancel-edit').style.display='inline-block';
+    $('btn-submit').textContent='Close and log this trade';
     switchTab('new');
   }
 
@@ -1506,9 +1618,85 @@
   $('f-pnl').addEventListener('input',updatePnlHint);
   $('f-outcome').addEventListener('change',updatePnlHint);
 
+  function num(id){const v=$(id).value;return v===''?null:Number(v);}
+
+  function tradeQuality(){
+    const margin=num('p-margin'), maxProfit=num('p-maxprofit'), maxLoss=num('p-structmax'), pop=num('p-prob');
+    const stop=num('p-maxloss'), target=num('p-target');
+    const q={margin,maxProfit,maxLoss,pop,stop,target,rows:[],level:'unknown',headline:'—',notes:[]};
+
+    if(stop&&target){
+      q.beWR=stop/(stop+target)*100;
+      q.rows.push({label:'Win rate you need just to break even',value:q.beWR.toFixed(1)+'%',
+        cls:q.beWR<55?'good':(q.beWR<70?'warn':'bad')});
+    }
+    if(pop&&stop&&target){
+      q.edge=pop-q.beWR;
+      q.expectancy=(pop/100)*target-(1-pop/100)*stop;
+      q.rows.push({label:'Platform probability of profit',value:pop.toFixed(0)+'%',cls:''});
+      q.rows.push({label:'Your edge over breakeven',value:(q.edge>0?'+':'')+q.edge.toFixed(1)+' points',
+        cls:q.edge>=8?'good':(q.edge>0?'warn':'bad')});
+      q.rows.push({label:'Expected value per trade at these exits',value:fmtINR(q.expectancy),
+        cls:q.expectancy>0?'good':'bad'});
+    }
+    if(maxProfit&&margin){
+      q.roc=maxProfit/margin*100;
+      q.rows.push({label:'Max return on the margin blocked',value:q.roc.toFixed(1)+'%',
+        cls:q.roc>=5?'good':(q.roc>=2?'warn':'bad')});
+    }
+    if(margin&&settings.capital){
+      q.conc=margin/settings.capital*100;
+      const capPct=settings.maxMarginPct||40;
+      q.rows.push({label:'Share of your capital this blocks',value:q.conc.toFixed(0)+'%',
+        cls:q.conc<=capPct/2?'good':(q.conc<=capPct?'warn':'bad')});
+    }
+    if(maxLoss&&margin){
+      q.rows.push({label:'Max loss as a share of margin blocked',value:(maxLoss/margin*100).toFixed(1)+'%',cls:''});
+    }
+
+    if(q.expectancy!==undefined){
+      if(q.expectancy<=0){
+        q.level='bad';
+        q.headline='Negative';
+        q.notes.push('At a '+fmtINR(stop)+' stop and a '+fmtINR(target)+' target you need to win '+q.beWR.toFixed(0)+'% of the time, and your platform gives this '+pop.toFixed(0)+'%. This loses money over a run of trades even when you follow every rule. Tighten the stop, raise the target, or skip the trade.');
+      }else if(q.edge<5){
+        q.level='warn';
+        q.headline='Thin';
+        q.notes.push('Only '+q.edge.toFixed(1)+' points of edge over your breakeven win rate. That is inside the error bars of a platform POP estimate, and charges will eat some of it. Worth taking only in small size.');
+      }else{
+        q.level='good';
+        q.headline='Positive';
+        q.notes.push('You need '+q.beWR.toFixed(0)+'% to break even and the platform gives this '+pop.toFixed(0)+'%, so about '+fmtINR(q.expectancy)+' expected per trade. That edge exists only while the stop holds — widening it moves the breakeven win rate up fast.');
+      }
+    }
+    if(q.conc!==undefined&&q.conc>(settings.maxMarginPct||40))
+      q.notes.push('This blocks '+q.conc.toFixed(0)+'% of your capital. Even with defined risk that is concentration: it leaves you no room for a second position and makes you reluctant to close.');
+    if(stop&&maxLoss&&stop>maxLoss)
+      q.notes.push('Your stop of '+fmtINR(stop)+' is wider than the structure can lose. The max loss of '+fmtINR(maxLoss)+' is your real floor, so the stop would never trigger.');
+    if(q.roc!==undefined&&q.roc<2)
+      q.notes.push('Max profit is only '+q.roc.toFixed(1)+'% of the margin blocked. Even a perfect outcome barely pays for the capital tied up.');
+    return q;
+  }
+
+  function renderTradeQuality(){
+    const q=tradeQuality();
+    const head=$('tq-headline'), rows=$('tq-rows'), note=$('tq-note');
+    head.textContent=q.headline;
+    head.className='calc-answer'+(q.level==='unknown'?'':' '+q.level);
+    if(!q.rows.length){
+      rows.innerHTML='<div class="tq-row">Enter the four platform numbers plus your stop and target, and this works out whether the trade pays.</div>';
+      note.textContent='';note.className='calc-note';
+      return q;
+    }
+    rows.innerHTML=q.rows.map(r=>`<div class="tq-row ${r.cls}"><span>${esc(r.label)}</span><span class="tq-val">${esc(r.value)}</span></div>`).join('');
+    note.textContent=q.notes.join(' ');
+    note.className='calc-note'+(q.level==='bad'?' warn':'');
+    return q;
+  }
+
   function renderCalc(){
-    const credit=$('p-credit').value===''?null:Number($('p-credit').value);
-    const structMax=$('p-structmax').value===''?null:Number($('p-structmax').value);
+    const credit=num('p-maxprofit');
+    const structMax=num('p-structmax');
     const r=computeStop(credit,structMax);
     const ansEl=$('calc-answer'),capsEl=$('calc-caps'),noteEl=$('calc-note'),costEl=$('calc-cost');
     if(!r.stop){
@@ -1525,6 +1713,16 @@
     costEl.innerHTML=b.perDay>0
       ? `A loss of ${esc(fmtINR(-r.stop))} costs you ${(r.stop/b.perDay).toFixed(1)} trading days at your current average of ${esc(fmtINR(b.perDay))} per day.`
       : 'Log a few trades and this will show what the stop costs you in trading days.';
+    const creditVal=credit?Math.abs(credit):0;
+    const structVal=structMax?Math.abs(structMax):0;
+    const unitWarn=[];
+    if(creditVal>0&&creditVal<500)unitWarn.push('a net credit of '+fmtINR(creditVal));
+    if(structVal>0&&structVal<500)unitWarn.push('a max loss of '+fmtINR(structVal));
+    if(unitWarn.length){
+      noteEl.className='calm-warn';
+      noteEl.textContent='You entered '+unitWarn.join(' and ')+'. That looks like points per unit rather than total rupees. Multiply by your lot size and number of lots — otherwise the stop below will come out far too tight to be usable.';
+      return r;
+    }
     const entered=$('p-maxloss').value===''?null:Math.abs(Number($('p-maxloss').value));
     if(entered&&entered>r.stop*1.001){
       noteEl.className='calc-note warn';
@@ -1537,7 +1735,7 @@
   }
   $('btn-use-stop').addEventListener('click',()=>{
     const r=renderCalc();
-    if(r.stop){$('p-maxloss').value=r.stop;posPreview();renderCalc();}
+    if(r.stop){$('p-maxloss').value=r.stop;posPreview();renderCalc();renderTradeQuality();}
   });
 
   // ---------- alerts: audio, notifications, check-in timer ----------
@@ -1644,6 +1842,30 @@
     await saveSettings();
   });
 
+  function renderMarginPanel(){
+    const panel=$('margin-panel');
+    const withMargin=positions.filter(p=>p.margin);
+    if(!positions.length||!withMargin.length){panel.style.display='none';return;}
+    panel.style.display='block';
+    const total=withMargin.reduce((s,p)=>s+Math.abs(Number(p.margin)),0);
+    $('mg-total').textContent=fmtINR(total);
+    const fill=$('mg-fill');
+    if(!settings.capital){
+      $('mg-share').textContent=withMargin.length+' of '+positions.length+' positions costed';
+      fill.style.width='0%';
+      $('mg-note').textContent='Set your capital under Rules and this will show how much of it is tied up.';
+      return;
+    }
+    const pct=Math.min(100,total/settings.capital*100);
+    fill.style.width=pct.toFixed(0)+'%';
+    fill.style.background=pct>=85?'var(--rust-loud)':(pct>=60?'var(--amber)':'var(--slate)');
+    $('mg-share').textContent=Math.round(pct)+'% of '+fmtINR(settings.capital);
+    const free=Math.max(0,settings.capital-total);
+    if(pct>=85)$('mg-note').textContent='Almost everything is deployed. With no free margin you cannot adjust, and a margin call would force the exit for you rather than letting your stop do it.';
+    else if(pct>=60)$('mg-note').textContent=fmtINR(free)+' still free. Worth stopping here — SPAN requirements rise when volatility rises, which is exactly when your positions are already under pressure.';
+    else $('mg-note').textContent=fmtINR(free)+' of margin still free.';
+  }
+
   function renderTimer(){
     const panel=$('timer-panel');
     if(!positions.length){panel.style.display='none';return;}
@@ -1732,7 +1954,8 @@
     if(problems.length){el.textContent='This opens already in violation: '+problems.join(', ');el.className='flag-preview warn';}
     else{el.textContent='This opens inside your rules';el.className='flag-preview';}
   }
-  ['p-maxloss','p-target','p-exitrule','p-credit','p-structmax'].forEach(id=>$(id).addEventListener('input',()=>{posPreview();renderCalc();}));
+  ['p-maxloss','p-target','p-exitrule','p-maxprofit','p-structmax','p-margin','p-prob']
+    .forEach(id=>$(id).addEventListener('input',()=>{posPreview();renderCalc();renderTradeQuality();}));
   ['p-sized','p-system'].forEach(id=>$(id).addEventListener('change',posPreview));
 
   // ---------- settings ----------
@@ -1743,6 +1966,7 @@
     $('s-creditmult').value=settings.creditMult??1.5;
     $('s-maxdaily').value=settings.maxDaily??'';
     $('s-monthbudget').value=settings.monthlyBudget??'';
+    $('s-marginpct').value=settings.maxMarginPct??40;
     $('s-holdwindow').value=settings.holdWindow||'same-day';
   }
   $('btn-save-settings').addEventListener('click',async ()=>{
@@ -1753,13 +1977,14 @@
       creditMult:Number($('s-creditmult').value)||0,
       maxDaily:$('s-maxdaily').value===''?null:Number($('s-maxdaily').value),
       monthlyBudget:$('s-monthbudget').value===''?null:Number($('s-monthbudget').value),
+      maxMarginPct:Number($('s-marginpct').value)||40,
       checkInMinutes:settings.checkInMinutes||5,
       holdWindow:$('s-holdwindow').value
     };
     await saveSettings();
     const st=$('settings-status');
     st.textContent='Saved. The calculator now uses these.';st.className='status-line';
-    renderCalc();renderCostTable();renderDashboard();
+    renderCalc();renderTradeQuality();renderCostTable();renderDashboard();
   });
 
   function renderCostTable(){
@@ -1828,6 +2053,7 @@
     $('trade-form').reset();
     $('f-date').value=new Date().toISOString().slice(0,10);
     $('btn-submit').textContent='Log entry';
+    $('btn-cancel-edit').textContent='Cancel';
     $('btn-cancel-edit').style.display='none';
     if(!keepLocked){pendingLocked=null;$('locked-note').style.display='none';}
     checklistPreview();
@@ -1872,12 +2098,13 @@
       strategy:$('p-strategy').value,
       instrument:$('p-instrument').value.trim(),
       positionSize:$('p-size').value.trim(),
-      credit:$('p-credit').value===''?null:Number($('p-credit').value),
+      maxProfit:num('p-maxprofit'),
+      credit:num('p-maxprofit'),
+      margin:num('p-margin'),
       maxLoss:$('p-maxloss').value===''?null:Math.abs(Number($('p-maxloss').value)),
       target:$('p-target').value===''?null:Math.abs(Number($('p-target').value)),
-      structMax:$('p-structmax').value===''?null:Number($('p-structmax').value),
-      structMaxProfit:$('p-structmaxprofit').value===''?null:Number($('p-structmaxprofit').value),
-      probOfProfit:$('p-prob').value===''?null:Number($('p-prob').value),
+      structMax:num('p-structmax'),
+      probOfProfit:num('p-prob'),
       plannedExitTime:$('p-exittime').value||null,
       exitRule:$('p-exitrule').value.trim(),
       sizedPerRules:$('p-sized').checked,
@@ -1885,7 +2112,7 @@
       updates:[],firstBreachAt:null
     });
     await savePositions();
-    $('pos-form').reset();posPreview();renderCalc();renderLive();
+    $('pos-form').reset();posPreview();renderCalc();renderTradeQuality();renderLive();
   });
 
   $('trade-form').addEventListener('submit',async e=>{
@@ -1914,6 +2141,8 @@
       t.checklist=pendingLocked.checklist;
       t.target=pendingLocked.target||null;
       t.probOfProfit=pendingLocked.probOfProfit??null;
+      t.margin=pendingLocked.margin??null;
+      t.structMax=pendingLocked.structMax??null;
     }
     if(editingId){
       const i=trades.findIndex(x=>x.id===editingId);
@@ -1929,7 +2158,11 @@
     resetForm();renderAll();switchTab('log');
   });
 
-  $('btn-cancel-edit').addEventListener('click',()=>{resetForm();switchTab('log');});
+  $('btn-cancel-edit').addEventListener('click',()=>{
+    const wasClosing=!!(pendingLocked&&pendingLocked.positionId);
+    resetForm();
+    switchTab(wasClosing?'live':'log');
+  });
   $('btn-log-new').addEventListener('click',()=>{resetForm();switchTab('new');});
 
   $('review-form').addEventListener('submit',async e=>{
@@ -1992,7 +2225,7 @@
     document.querySelectorAll('.botnav-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('data-tab')===name));
     document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+name));
     if(name==='live')renderLive();
-    if(name==='dashboard')renderDashboard();
+    if(name==='dashboard'){renderDashboard();renderReviews();}
     if(name==='rules'){fillSettingsForm();renderCostTable();}
   }
   document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>switchTab(b.getAttribute('data-tab'))));
@@ -2021,7 +2254,7 @@
   (async function init(){
     $('f-date').value=new Date().toISOString().slice(0,10);
     $('r-date').value=new Date().toISOString().slice(0,10);
-    checklistPreview();posPreview();
+    checklistPreview();posPreview();renderTradeQuality();
     lsOK=testLocalStorage();
     if(!lsOK){storageOK=false;showStorageWarn();}
     trades=await loadKey('trades',[]);
