@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0F141A">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Trade Log">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAADgklEQVR42u3bv2oUQRzA8bklraQ5CCSpgkVKH8QHEKx9A8uACCntLK0FH8DSIo9gmSpVUgRS+AgWB0c0ybE3O392dj5fLC+5cPfhN7O74+pwfRyk2AYfgQASQAJIAEkACSABJIAkgASQANJCOyj/lqdn5z73fN3eXJd8u1WZp/HQLBVTXkDPunm4v/PV5mt9dFJSUi5A/9GBZg6YcjBKD+gxHW7mxii5ocSAtnrQ6YRRSkD0NMQolaE0gNBpkVESQwkA0dPzKBro6bPt9zXxFt1AD0NTDA0J/w61a6gCoA1bepZhKHoIDfRoiqEhWo+WV8Q3O0xkq843Q0McUnosZMmuwtRz+wEyfgwhE0j1JpAUD8j6ZRUzgWQJE0DqDpANkG2QCSRLmAASQBJAAkgAKXE/L9+UfLsDnzgfAPEBECJtBlB7Pt5e/AaIjzZ8ADTH9aUtIgDxARAfANmCAMSHqgLiA6D6IQIQHwDxoRBC4eMc9AAkASSABJAAEkA+AgGkajlQNq/eXb7f/YIfF99NIEXqGfkagGQPJIAkgASQABJAEkACSAAJIAkgAaTKOc4xtuYOWphALekJ8ztoAZAAEkASQAJIAAkg6Z/cSMxYD/ceTaBqesIi7j0CJIAEkACSqzAXO+ptAjloAZAAEkASQAJIAAkgaVSdHudw79EEyqgnuPcIkAASQAJIaukqzPWRCeT6CCAJIAEkgASQBJAAEkACSAJIAAkgASSAJIAEkAASQBJAAkgACSBpZ0X/X9j66KTW7+nqRx7u70ygF/v19cqPWMIiP52nL4j7kVd/Xu/+V+sPa0tPCGF1uD4e87rTs/PCszFfHz5+GvOyb18+d7uz2ayStzfXNtGyBxJAAkgCSAAJIAEkASSABJAAEkASQJotoM2T/VRHCjXnxp/lMIFkCctTz6fJAJqKg57xjT3SumlJB1s1fQNkCVONJcy1mPETCWivXy0TyBDqbvxkB2QILbt9v98h+j0Moc53P67ClGBDEgnIELJ4TZ1ADHW+eCVYwhjqXE+yPRBDfepJAGj79gx1qCfs+zD1pTYPWYPnrE1dcyW5pZcGEEZ96kkMiKEm6ISkjxMSA3psCKNl08kF6CkjkuZAJ+R5jpkL0LOMYCqPJmR+/p0X0G5Jyl2BoxOFAMG0JDSVAWlJOc4hgASQABJAEkACSAAJIAkgAaQZ9xd9+VvgLP5kqwAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADaElEQVR42u3boW4UQRjA8e3mfM0lTdqqqkoeAYHE4EgIDssb1JBU4pDgCAkOg0TwCMiqqlY06UMgLlzI9Xq92/1mbmfm97fd9K43v3y7s3s9OJwfd9K6eh+B4BAcgkNwCA7BITgEh+AQHNJqs2yvdHp27uOO6ub6KsOrHCR98AZE0VBS4XjI4v7u1kJGNT86yUAkHscKCyZyKoklEonjfxZM7FFJFJEwHEsZWEyBSIiPnoyaWn7+IVuBsZMDi4pHSE+GERKPg4zqffRR70BT9pEVxwIjGaX4GDY8ejL4CMPhcUm57bp2/RiMqvviox9Aj4xGTi6+7KMIHMZGa8PD5NBoHDYpDW5bdpsczilNbVucVgSHEuGwT2lzz2JyCA7BITgEh+AQHIJD6ft5+SzDq8x80M2uPRzWHg4LD0c7a//y4g8c1t7kaGnti1j45nBY+0ZxGPjt4rD27eKw9nBYeDisPRzWvvF6MrRnHIJDcAgOwSHBoR3zfY799PryzYaffr/4ZnKQMfAAOASH4BAcgkNwCA4JDsEhOASH4NDU8lR2fUU8NTU5Jiejm8xTUzgEh+AQHIJDcKjN3OfIsfst9L6IyZFcRlfsfRE4BIfgEByyW2lsd2By2B3AITgEh+CQ4BAcGlUrT2XdFzE5hsjo3BdxWhEcgkNwyG7FbsLksJuAQ3AIDsEhwSE4BIfgEByCQ3AIDsEhOCQ4BIfgEByCQ3AIDpVZpn9NmB+dZP4N1R9/f3ebetUODufHTx50enY+8t08+ae+eP98w09/ffo98vhXb99tOP7H1y+Z38+ux8fiWCzHzfVVGTiStlnGYz4mXgYcs+n/Jd6hC1LBITgEh+AQHBIcgkNwCA7BITgEh2rHsXi2u9/H7opqy+f1Joeax/H544eRB7TZVt8E6/59GazzpZgqzinBp5VtfpdKacvVdM2hCBz2LO3sU0wOheIwPNoZG8MnBx+FblISTg7blhY2KaMmh5NL9SeUUacVPqqXEbBb4aO+S40AHEuMfExcxuDLxFGTg4+KZXTbP3jbnMdylbGIueYwQmqVETY5VuaHEbLfa8+oe1GROB4SoSTzfiT2FmU8jrVEKEm9R01x5zoVjseIKLx0DzTS4gClOBD7waHi8mUfwSE4BIfgEByCQ3AIDsGhdvsLBvlBEP2TYpEAAAAASUVORK5CYII=">
+<title>Trade Log — offline</title>
+<style>
+  :root{
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --display:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --bg:#0F141A; --panel:#171F27; --panel-raised:#1E2833; --hairline:#2B3642;
+    --ink:#EDEAE1; --ink-dim:#93A0AC; --ink-faint:#5C6773;
+    --brass:#CBA357; --brass-soft:#8A754A;
+    --green:#6FA382; --green-soft:#31423A;
+    --amber:#D9A34A; --amber-soft:#4A3A22;
+    --rust:#C77B5C; --rust-soft:#4A322C; --rust-loud:#E0603B;
+    --slate:#7C93A6; --slate-soft:#2A3A46;
+    --calm:#9FB3C0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  #app{max-width:1040px;margin:0 auto;padding:26px 20px 64px;}
+  ::selection{background:var(--brass-soft);color:var(--ink);}
+  :focus-visible{outline:2px solid var(--brass);outline-offset:2px;}
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;}}
+  h1,h2,h3{font-family:var(--sans);}
+  .numeral,.num-cell,.gauge-value,.readout-value,.streak-num,.pos-pnl,.bar-num,.asym-val,.calc-answer,.cap-val,.timer-count,.breach-clock,.flag-pnl{font-variant-numeric:tabular-nums;}
+
+  .topbar{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--hairline);padding-bottom:16px;margin-bottom:22px;}
+  .brand-name{font-size:22px;font-weight:700;letter-spacing:.2px;}
+  .brand-sub{color:var(--ink-dim);font-size:13px;margin-top:3px;}
+  .tabs{display:flex;gap:2px;flex-wrap:wrap;}
+  .tab-btn{background:none;border:none;color:var(--ink-dim);font-family:var(--sans);font-size:14px;font-weight:500;padding:8px 11px;cursor:pointer;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{color:var(--ink);border-bottom-color:var(--brass);}
+  .tab-btn .badge{display:inline-block;background:var(--rust);color:#150E0B;border-radius:9px;font-size:11px;font-weight:700;padding:0 6px;margin-left:5px;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .instrument-panel{background:var(--panel);border:1px solid var(--hairline);border-radius:3px;padding:18px 20px;}
+  .panel-title{font-size:13px;color:var(--ink-dim);margin-bottom:12px;font-weight:500;}
+
+  .storage-warn{background:var(--rust-soft);border:1px solid var(--rust);border-radius:3px;padding:10px 14px;font-size:13px;margin-bottom:16px;color:var(--ink);}
+
+  /* ---- Live monitor ---- */
+  .pos-card{border:1px solid var(--hairline);border-left:3px solid var(--ink-faint);border-radius:3px;background:var(--panel);padding:16px 18px;margin-bottom:14px;}
+  .pos-card.ok{border-left-color:var(--green);}
+  .pos-card.watch{border-left-color:var(--amber);}
+  .pos-card.violation{border-left-color:var(--rust-loud);background:linear-gradient(90deg,var(--rust-soft) 0%,var(--panel) 55%);}
+  .pos-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;}
+  .pos-name{font-family:var(--display);font-size:17px;font-weight:600;}
+  .pos-meta{font-size:12.5px;color:var(--ink-dim);margin-top:2px;}
+  .pos-pnl{font-family:var(--display);font-size:26px;font-weight:700;text-align:right;}
+  .pos-pnl.pos{color:var(--green);} .pos-pnl.neg{color:var(--rust);}
+  .pos-pnl-sub{font-size:12px;color:var(--ink-faint);text-align:right;}
+
+  .verdict{margin-top:14px;padding:11px 13px;border-radius:3px;font-size:14px;}
+  .verdict.ok{background:var(--green-soft);color:#CFE3D6;}
+  .verdict.watch{background:var(--amber-soft);color:#F0DCB4;}
+  .verdict.violation{background:#5A2E20;color:#FFD9CC;border:1px solid var(--rust-loud);}
+  .verdict-head{font-weight:600;font-family:var(--display);font-size:15px;margin-bottom:4px;}
+  .verdict ul{margin:6px 0 0;padding-left:18px;}
+  .verdict li{margin-bottom:3px;}
+  .breach-clock{font-family:var(--display);font-weight:700;}
+
+  .risk-bar-wrap{margin-top:13px;}
+  .risk-bar{height:7px;background:var(--hairline);border-radius:4px;overflow:hidden;}
+  .risk-fill{height:100%;width:0;background:var(--green);transition:width .3s,background .3s;}
+  .risk-legend{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-faint);margin-top:4px;}
+
+  .update-row{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:14px;padding-top:13px;border-top:1px solid var(--hairline);}
+  .update-row .field{flex:1;min-width:150px;}
+  .stale-note{font-size:12.5px;color:var(--amber);margin-top:8px;}
+  .rule-recall{font-size:12.5px;color:var(--ink-dim);margin-top:10px;border-left:2px solid var(--brass-soft);padding-left:10px;}
+
+  /* ---- Gauges / dashboard ---- */
+  .gauge-row{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;}
+  @media (max-width:760px){.gauge-row{grid-template-columns:repeat(2,1fr);}}
+  .gauge-panel{text-align:center;padding-top:14px;}
+  .gauge-svg-wrap{max-width:170px;margin:0 auto;}
+  .gauge-svg{width:100%;display:block;}
+  .gauge-bg{fill:none;stroke:var(--hairline);stroke-width:11;}
+  .gauge-fg{fill:none;stroke-width:11;stroke-linecap:round;}
+  .gauge-tick{stroke:var(--ink-faint);stroke-width:1.5;}
+  .gauge-value{font-family:var(--display);font-size:28px;font-weight:700;margin-top:-38px;}
+  .gauge-label{font-size:12.5px;color:var(--ink-dim);margin-top:2px;}
+  .readout-panel{display:flex;flex-direction:column;justify-content:center;}
+  .readout-value{font-family:var(--display);font-size:30px;font-weight:700;}
+  .readout-value.pos{color:var(--green);} .readout-value.neg{color:var(--rust);}
+  .readout-label{font-size:12.5px;color:var(--ink-dim);margin-top:4px;}
+  .spark{width:100%;height:34px;margin-top:8px;}
+  .streak-panel{display:flex;flex-direction:column;justify-content:center;gap:10px;}
+  .streak-row{display:flex;justify-content:space-between;align-items:baseline;}
+  .streak-num{font-family:var(--display);font-size:22px;font-weight:700;}
+  .streak-lbl{font-size:12px;color:var(--ink-dim);}
+
+  .cooloff{background:var(--amber-soft);border:1px solid var(--amber);border-radius:3px;padding:12px 15px;font-size:13.5px;margin-bottom:14px;color:#F0DCB4;}
+
+  .chart-panel{margin-bottom:14px;}
+  .ledger-rule{stroke:var(--hairline);stroke-width:1;}
+  .zero-line{stroke:var(--brass-soft);stroke-width:1;stroke-dasharray:3 4;}
+  .pnl-line{fill:none;stroke:var(--brass);stroke-width:2;}
+  .flag-dot{fill:var(--rust);}
+  .axis-label{fill:var(--ink-faint);font-size:10px;font-family:var(--sans);}
+  .empty-note{color:var(--ink-faint);font-size:13.5px;padding:22px 0;text-align:center;}
+
+  .split-row{display:grid;grid-template-columns:1.1fr 1fr;gap:14px;}
+  @media (max-width:760px){.split-row{grid-template-columns:1fr;}}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .strat-table th,.strat-table td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--hairline);}
+  .strat-table th{color:var(--ink-dim);font-weight:500;font-size:12px;}
+  .num-cell{font-family:var(--display);text-align:right;}
+  .flag-item{border-left:2px solid var(--rust);padding:7px 0 7px 12px;margin-bottom:8px;}
+  .flag-item:last-child{margin-bottom:0;}
+  .flag-top{display:flex;justify-content:space-between;font-size:13.5px;gap:10px;}
+  .flag-strategy{color:var(--ink-dim);}
+  .flag-pnl{font-family:var(--display);color:var(--rust);}
+  .flag-reason{font-size:12.5px;color:var(--ink-faint);margin-top:2px;}
+
+  .toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+  .btn{background:var(--brass);color:#171018;border:none;border-radius:3px;padding:9px 16px;font-family:var(--sans);font-weight:600;font-size:13.5px;cursor:pointer;transition:opacity .15s;}
+  .btn:hover{opacity:.88;}
+  .btn.ghost-btn{background:none;color:var(--ink-dim);border:1px solid var(--hairline);}
+  .btn.ghost-btn:hover{color:var(--ink);border-color:var(--ink-dim);}
+  .btn.danger{background:var(--rust);color:#180D08;}
+  .btn.small{padding:6px 11px;font-size:12.5px;}
+
+  .ledger-table th{text-align:left;color:var(--ink-dim);font-weight:500;font-size:12px;padding:8px;border-bottom:1px solid var(--hairline);}
+  .ledger-table td{padding:9px 8px;border-bottom:1px solid var(--hairline);vertical-align:top;}
+  .ledger-table tr.log-row{cursor:pointer;}
+  .ledger-table tr.log-row:hover td{background:var(--panel-raised);}
+  .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;}
+  .dot.win{background:var(--green);} .dot.loss{background:var(--rust);} .dot.be{background:var(--ink-faint);}
+  .rule-tag{font-size:12px;}
+  .rule-tag.ok{color:var(--green);} .rule-tag.no{color:var(--rust);}
+  .row-actions{white-space:nowrap;}
+  .row-actions button{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:12px;padding:2px 5px;font-family:var(--sans);}
+  .row-actions button:hover{color:var(--ink);}
+  .detail-row td{background:var(--panel-raised);color:var(--ink-dim);font-size:13px;padding:12px;}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;}
+  @media (max-width:600px){.detail-grid{grid-template-columns:1fr;}}
+  .detail-grid div span{color:var(--ink-faint);}
+
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin-bottom:6px;}
+  @media (max-width:700px){.form-grid{grid-template-columns:1fr;}}
+  .field label{display:block;font-size:13px;color:var(--ink-dim);margin-bottom:6px;}
+  .field input[type=text],.field input[type=number],.field input[type=date],.field input[type=time],.field select,.field textarea{
+    width:100%;background:var(--panel-raised);border:1px solid var(--hairline);color:var(--ink);border-radius:3px;padding:9px 10px;font-family:var(--sans);font-size:14px;}
+  .field textarea{resize:vertical;min-height:64px;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brass);}
+  .field .hint{font-size:12px;color:var(--ink-faint);margin-top:4px;}
+  .full{grid-column:1/-1;}
+
+  .checklist-block{background:var(--panel-raised);border:1px solid var(--hairline);border-radius:3px;padding:14px 16px;margin:8px 0 18px;}
+  .checklist-title{font-size:13px;color:var(--ink-dim);margin-bottom:10px;}
+  .switch-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--hairline);}
+  .switch-row:last-child{border-bottom:none;}
+  .switch-row span{font-size:13.5px;max-width:430px;}
+  .switch{position:relative;width:38px;height:21px;flex-shrink:0;margin-left:14px;}
+  .switch input{opacity:0;width:0;height:0;}
+  .switch-track{position:absolute;inset:0;background:var(--hairline);border-radius:11px;cursor:pointer;transition:background .15s;}
+  .switch-track::before{content:"";position:absolute;width:15px;height:15px;left:3px;top:3px;background:var(--ink-dim);border-radius:50%;transition:transform .15s,background .15s;}
+  .switch input:checked + .switch-track{background:var(--green-soft);}
+  .switch input:checked + .switch-track::before{transform:translateX(17px);background:var(--green);}
+
+  /* stop calculator */
+  .calc-block{background:var(--panel-raised);border:1px solid var(--brass-soft);border-radius:3px;padding:14px 16px;margin:8px 0 18px;}
+  .calc-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .calc-title{font-size:13px;color:var(--ink-dim);}
+  .calc-answer{font-family:var(--display);font-size:26px;font-weight:700;color:var(--brass);}
+  .cap-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--hairline);color:var(--ink-faint);}
+  .cap-row:last-of-type{border-bottom:none;}
+  .cap-row.binding{color:var(--ink);}
+  .cap-row.binding .cap-val{color:var(--brass);font-weight:600;}
+  .cap-val{font-family:var(--display);}
+  .cap-tag{font-size:11px;color:var(--brass);margin-left:6px;}
+  .calc-note{font-size:12.5px;color:var(--ink-faint);margin-top:10px;}
+  .calc-note.warn{color:var(--rust);}
+  .calc-cost{font-size:13px;color:var(--ink-dim);margin-top:8px;border-left:2px solid var(--brass-soft);padding-left:10px;}
+
+  /* dual bars */
+  .dual-bars{margin-top:13px;display:grid;gap:9px;}
+  .bar-line{display:grid;grid-template-columns:78px 1fr 92px;align-items:center;gap:9px;font-size:11.5px;color:var(--ink-faint);}
+  .bar-track{height:7px;background:var(--hairline);border-radius:4px;overflow:hidden;}
+  .bar-fill{height:100%;width:0;border-radius:4px;transition:width .3s,background .3s;}
+  .bar-num{text-align:right;font-family:var(--display);}
+  .erased{font-size:13px;margin-top:10px;color:var(--rust);}
+  .erased strong{font-family:var(--display);}
+
+  /* asymmetry */
+  .asym-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;}
+  @media (max-width:600px){.asym-grid{grid-template-columns:1fr;}}
+  .asym-item{border-bottom:1px solid var(--hairline);padding-bottom:9px;}
+  .asym-val{font-family:var(--display);font-size:20px;font-weight:700;}
+  .asym-val.good{color:var(--green);} .asym-val.bad{color:var(--rust);} .asym-val.mid{color:var(--amber);}
+  .asym-lbl{font-size:12.5px;color:var(--ink-dim);margin-top:2px;}
+  .asym-note{font-size:12px;color:var(--ink-faint);margin-top:3px;}
+  .diagnosis{margin-top:14px;padding:11px 13px;border-radius:3px;font-size:13.5px;background:var(--panel-raised);border-left:2px solid var(--brass);color:var(--ink-dim);}
+
+  /* alerts */
+  #alert-bar{display:none;border:1px solid var(--rust-loud);background:#5A2E20;color:#FFD9CC;border-radius:3px;padding:14px 16px;margin-bottom:16px;}
+  #alert-bar.open{display:block;}
+  #alert-bar.calm{border-color:var(--brass);background:var(--panel-raised);color:var(--ink);}
+  .alert-head{font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:5px;}
+  .alert-body{font-size:13.5px;}
+  .alert-actions{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap;align-items:center;}
+
+  .timer-panel{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+  .timer-left{display:flex;align-items:baseline;gap:10px;}
+  .timer-count{font-family:var(--display);font-size:24px;font-weight:700;color:var(--brass);}
+  .timer-count.due{color:var(--rust-loud);}
+  .timer-lbl{font-size:12.5px;color:var(--ink-dim);}
+  .timer-right{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .timer-right select{background:var(--panel-raised);border:1px solid var(--hairline);color:var(--ink);border-radius:3px;padding:6px 8px;font-family:var(--sans);font-size:13px;}
+  .alert-mode{font-size:12px;color:var(--ink-faint);}
+  .alert-mode.on{color:var(--green);}
+
+  .tip-panel{border-left:2px solid var(--brass);padding:12px 0 12px 14px;margin-bottom:14px;}
+  .tip-text{font-size:14.5px;line-height:1.55;}
+  .tip-foot{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:12px;}
+  .tip-ctx{font-size:12px;color:var(--ink-faint);}
+
+  .budget-wrap{margin-bottom:10px;}
+  .budget-track{height:12px;background:var(--slate-soft);border-radius:6px;overflow:hidden;}
+  .budget-fill{height:100%;width:0;background:var(--slate);border-radius:6px;transition:width .3s,background .3s;}
+  .budget-legend{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-dim);margin-top:6px;}
+  .budget-note{font-size:13px;color:var(--ink-faint);}
+  .bars-key{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink-faint);margin-top:10px;}
+  .bars-key i.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:baseline;}
+  .calm-warn{font-size:12.5px;color:var(--ink-faint);border-left:2px solid var(--slate);padding-left:10px;margin-bottom:12px;}
+  .bar-win{fill:var(--green);} .bar-calm{fill:var(--slate);} .bar-break{fill:var(--rust-loud);}
+  .plan-band{fill:var(--slate);opacity:.10;}
+  .plan-edge{stroke:var(--slate);stroke-width:1;stroke-dasharray:4 4;opacity:.5;}
+  .disc-line{fill:none;stroke:var(--brass);stroke-width:2;}
+  .disc-area{fill:var(--brass);opacity:.07;}
+
+  .form-actions{display:flex;gap:10px;align-items:center;margin-top:4px;flex-wrap:wrap;}
+  .flag-preview{font-size:12.5px;color:var(--ink-faint);}
+  .flag-preview.warn{color:var(--rust);}
+  .locked-note{font-size:12.5px;color:var(--brass);margin-bottom:12px;border-left:2px solid var(--brass);padding-left:10px;}
+
+  .review-entry{border-bottom:1px solid var(--hairline);padding:14px 0;}
+  .review-entry:last-child{border-bottom:none;}
+  .review-date{font-size:12.5px;color:var(--ink-dim);margin-bottom:5px;font-family:var(--display);}
+  .review-text{font-size:14px;white-space:pre-wrap;}
+  .review-del{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:12px;float:right;}
+  .review-del:hover{color:var(--rust);}
+
+  details.data-block{margin-top:22px;border-top:1px solid var(--hairline);padding-top:14px;}
+  details.data-block summary{cursor:pointer;color:var(--ink-dim);font-size:13.5px;}
+  details.data-block summary:hover{color:var(--ink);}
+  .data-inner{margin-top:14px;}
+  .data-inner textarea{width:100%;min-height:120px;background:var(--panel-raised);border:1px solid var(--hairline);color:var(--ink-dim);border-radius:3px;padding:10px;font-family:ui-monospace,monospace;font-size:12px;resize:vertical;}
+  .status-line{font-size:12.5px;color:var(--green);margin-top:8px;min-height:18px;}
+  .status-line.err{color:var(--rust);}
+
+  /* ---- direction buttons: sign by tap, never by keyboard ---- */
+  .upd-amount{flex:1 1 100%;}
+  .dir-pair{display:flex;gap:8px;flex:1 1 100%;}
+  .btn.dir{flex:1;min-height:46px;font-size:15px;}
+  .dir-down{background:var(--slate);color:#12202A;}
+  .dir-up{background:var(--green);color:#0E1A13;}
+  .pos-actions{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap;}
+
+  .botnav{display:none;}
+  .botnav-btn{position:relative;}
+  button,.btn,select,summary,.tab-btn,.switch-track{touch-action:manipulation;}
+
+  @media (max-width:680px){
+    #app{padding:16px 14px 96px;}
+    .tabs{display:none;}
+    .topbar{padding-bottom:12px;margin-bottom:16px;}
+    .brand-name{font-size:19px;}
+
+    .field input[type=text],.field input[type=number],.field input[type=date],
+    .field input[type=time],.field select,.field textarea,
+    .data-inner textarea,.timer-right select{font-size:16px;padding:11px 12px;}
+
+    .btn{min-height:44px;padding:11px 16px;font-size:15px;}
+    .btn.small{min-height:40px;padding:9px 13px;font-size:14px;}
+    .row-actions button{min-height:38px;padding:8px 10px;font-size:13px;}
+    .switch{width:46px;height:26px;}
+    .switch-track::before{width:20px;height:20px;}
+    .switch input:checked + .switch-track::before{transform:translateX(20px);}
+    .switch-row span{max-width:none;padding-right:6px;}
+
+    .gauge-row{grid-template-columns:1fr 1fr;gap:10px;}
+    .instrument-panel{padding:14px 15px;}
+    .form-grid{grid-template-columns:1fr;gap:14px;}
+    .split-row{grid-template-columns:1fr;}
+    .asym-grid{grid-template-columns:1fr;}
+    .pos-pnl{font-size:30px;}
+    .pos-head{gap:8px;}
+    .update-row{gap:10px;}
+
+    .axis-label{font-size:15px;}
+    .bars-key{font-size:12.5px;gap:12px;}
+
+    .ledger-table thead{display:none;}
+    .ledger-table,.ledger-table tbody,.ledger-table tr,.ledger-table td{display:block;width:100%;}
+    .ledger-table tr.log-row{border:1px solid var(--hairline);border-radius:4px;padding:12px 13px;margin-bottom:10px;}
+    .ledger-table tr.log-row td{border:none;padding:2px 0;}
+    .ledger-table tr.log-row td:first-child{font-family:var(--display);color:var(--ink-dim);font-size:12.5px;}
+    .ledger-table tr.log-row td:nth-child(2){font-size:16px;padding-bottom:4px;}
+    .ledger-table tr.log-row td:nth-child(3):before{content:'Instrument: ';color:var(--ink-faint);}
+    .ledger-table tr.log-row td:nth-child(5){font-size:19px;font-family:var(--display);text-align:left;}
+    .ledger-table tr.log-row td.row-actions{margin-top:8px;display:flex;gap:6px;}
+    .detail-row td{border-radius:4px;margin:-4px 0 12px;}
+    .detail-grid{grid-template-columns:1fr;}
+
+    .timer-panel{flex-direction:column;align-items:stretch;gap:12px;}
+    .timer-right{justify-content:space-between;}
+    #alert-bar{padding:16px;}
+    .alert-head{font-size:17px;}
+    .dialog{padding:18px;}
+
+    .botnav{
+      display:grid;grid-template-columns:repeat(5,1fr);
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      background:var(--panel);border-top:1px solid var(--hairline);
+      padding-bottom:env(safe-area-inset-bottom,0);
+    }
+    .botnav-btn{
+      background:none;border:none;color:var(--ink-faint);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:3px;padding:9px 2px 8px;min-height:56px;cursor:pointer;
+      font-family:var(--sans);border-top:2px solid transparent;
+    }
+    .botnav-btn.active{color:var(--ink);border-top-color:var(--brass);}
+    .bn-ic{font-size:17px;line-height:1;}
+    .bn-lb{font-size:11px;}
+    .bn-badge{display:none;position:absolute;top:5px;right:calc(50% - 20px);
+      background:var(--rust-loud);color:#150E0B;border-radius:9px;font-size:10px;font-weight:600;padding:1px 5px;line-height:1.4;}
+    .bn-badge.on{display:block;}
+  }
+
+  @media (max-width:400px){
+    .gauge-row{grid-template-columns:1fr;}
+    .bn-lb{font-size:10px;}
+  }
+
+  /* in-page confirm */
+  .scrim{position:fixed;inset:0;background:rgba(8,11,15,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:50;}
+  .scrim.open{display:flex;}
+  .dialog{background:var(--panel);border:1px solid var(--hairline);border-radius:4px;padding:22px;max-width:420px;width:100%;}
+  .dialog h3{margin:0 0 8px;font-size:17px;}
+  .dialog p{margin:0 0 18px;font-size:14px;color:var(--ink-dim);}
+  .dialog-actions{display:flex;gap:10px;justify-content:flex-end;}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <div>
+      <div class="brand-name">Trade Log</div>
+      <div class="brand-sub">Live rule monitor and discipline journal</div>
+      <div class="brand-sub" id="save-stamp" style="color:var(--ink-faint);font-size:12px;"></div>
+    </div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="live">Live positions<span class="badge" id="live-badge" style="display:none;">0</span></button>
+      <button class="tab-btn" data-tab="dashboard">Dashboard</button>
+      <button class="tab-btn" data-tab="log">Trade log</button>
+      <button class="tab-btn" data-tab="new">New entry</button>
+      <button class="tab-btn" data-tab="review">Weekly review</button>
+      <button class="tab-btn" data-tab="rules">My rules</button>
+    </nav>
+  </header>
+
+  <div class="storage-warn" id="storage-warn" style="display:none;"></div>
+
+  <nav class="botnav" id="botnav" aria-label="Sections">
+    <button class="botnav-btn active" data-tab="live"><span class="bn-ic">&#9679;</span><span class="bn-lb">Live</span><span class="bn-badge" id="botnav-badge"></span></button>
+    <button class="botnav-btn" data-tab="dashboard"><span class="bn-ic">&#9636;</span><span class="bn-lb">Stats</span></button>
+    <button class="botnav-btn" data-tab="new"><span class="bn-ic">&#43;</span><span class="bn-lb">Log</span></button>
+    <button class="botnav-btn" data-tab="log"><span class="bn-ic">&#9776;</span><span class="bn-lb">History</span></button>
+    <button class="botnav-btn" data-tab="rules"><span class="bn-ic">&#9881;</span><span class="bn-lb">Rules</span></button>
+  </nav>
+
+  <main>
+    <!-- LIVE POSITIONS -->
+    <section id="tab-live" class="tab-panel active">
+      <div id="alert-bar">
+        <div class="alert-head" id="alert-head"></div>
+        <div class="alert-body" id="alert-body"></div>
+        <div class="alert-actions">
+          <button type="button" class="btn small" id="alert-goto">Go to the position</button>
+          <button type="button" class="btn small ghost-btn" id="alert-dismiss">Dismiss for one cycle</button>
+        </div>
+      </div>
+
+      <div class="instrument-panel timer-panel" id="timer-panel" style="display:none;">
+        <div class="timer-left">
+          <span class="timer-count" id="timer-count">--:--</span>
+          <span class="timer-lbl" id="timer-lbl">until your next check-in</span>
+        </div>
+        <div class="timer-right">
+          <label for="s-interval" class="timer-lbl">Every</label>
+          <select id="s-interval">
+            <option value="3">3 min</option><option value="5">5 min</option>
+            <option value="10">10 min</option><option value="15">15 min</option>
+          </select>
+          <button type="button" class="btn small ghost-btn" id="btn-enable-alerts">Enable sound &amp; alerts</button>
+          <span class="alert-mode" id="alert-mode">sound off</span>
+        </div>
+      </div>
+
+      <div class="instrument-panel tip-panel" id="tip-panel">
+        <div class="tip-text" id="tip-text"></div>
+        <div class="tip-foot">
+          <span class="tip-ctx" id="tip-ctx"></span>
+          <button type="button" class="btn small ghost-btn" id="btn-next-tip">Another</button>
+        </div>
+      </div>
+
+      <div id="open-positions"></div>
+      <div class="empty-note" id="live-empty">No open positions. Open one below before you place the trade, not after.</div>
+
+      <div class="instrument-panel" style="margin-top:16px;">
+        <div class="panel-title">Open a position — fill this in before you enter the trade</div>
+        <form id="pos-form">
+          <div class="form-grid">
+            <div class="field"><label for="p-strategy">Strategy</label>
+              <select id="p-strategy">
+                <option>Short Iron Butterfly</option><option>Naked Call</option><option>Naked Put</option>
+                <option>Long Straddle</option><option>Short Straddle</option><option>Short Strangle</option>
+                <option>Iron Condor</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field"><label for="p-instrument">Instrument</label><input type="text" id="p-instrument" placeholder="NIFTY, BANKNIFTY, ..."></div>
+            <div class="field"><label for="p-size">Position size / lots</label><input type="text" id="p-size" placeholder="e.g. 2 lots"></div>
+            <div class="field"><label for="p-credit">Credit received (₹)</label><input type="number" inputmode="decimal" id="p-credit" step="any"></div>
+            <div class="field"><label for="p-structmax">Structure max loss from your platform (₹)</label><input type="number" inputmode="decimal" id="p-structmax" step="any" min="0" placeholder="what your platform shows">
+              <div class="hint">The theoretical worst case of the spread. This is a ceiling, not your stop.</div></div>
+            <div class="field"><label for="p-structmaxprofit">Max profit from your platform (₹)</label><input type="number" inputmode="decimal" id="p-structmaxprofit" step="any" min="0"></div>
+            <div class="field"><label for="p-prob">Probability of profit shown (%)</label><input type="number" inputmode="decimal" id="p-prob" step="any" min="0" max="100" placeholder="e.g. 68"></div>
+            <div class="field"><label for="p-exittime">Planned exit time or date (optional)</label><input type="time" id="p-exittime">
+              <div class="hint">Past this time the monitor flags you as holding too long.</div></div>
+          </div>
+
+          <div class="calc-block">
+            <div class="calc-head">
+              <div class="calc-title">Your mandatory stop for this position — the tightest of your four caps</div>
+              <div class="calc-answer" id="calc-answer">—</div>
+            </div>
+            <div id="calc-caps"></div>
+            <div class="calc-cost" id="calc-cost"></div>
+            <div class="calc-note" id="calc-note"></div>
+            <div class="form-actions" style="margin-top:12px;">
+              <button type="button" class="btn small" id="btn-use-stop">Use this as my stop</button>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field"><label for="p-maxloss">Stop — max loss you will accept (₹)</label><input type="number" inputmode="decimal" id="p-maxloss" step="any" min="0" placeholder="e.g. 2100">
+              <div class="hint">Positive number. Leave blank and the position logs as undefined-risk from the start.</div></div>
+            <div class="field"><label for="p-target">Profit target (₹)</label><input type="number" inputmode="decimal" id="p-target" step="any" min="0" placeholder="e.g. 1400">
+              <div class="hint">Set this too. Without a target you book winners on feel, which is half of the problem.</div></div>
+            <div class="field full"><label for="p-exitrule">Exit rule, in your own words</label><input type="text" id="p-exitrule" placeholder="Close at ₹1,400 profit or ₹2,100 loss, or by 2:45 pm — whichever comes first"></div>
+          </div>
+          <div class="checklist-block">
+            <div class="checklist-title">Two questions, answered now — they get locked into the log when you close</div>
+            <div class="switch-row"><span>Position is sized per my risk rules</span>
+              <label class="switch"><input type="checkbox" id="p-sized"><span class="switch-track"></span></label></div>
+            <div class="switch-row"><span>This fits my tested system — it is not an improvised experiment</span>
+              <label class="switch"><input type="checkbox" id="p-system"><span class="switch-track"></span></label></div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn">Open position</button>
+            <span class="flag-preview" id="pos-preview"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="tab-dashboard" class="tab-panel">
+      <div class="cooloff" id="cooloff" style="display:none;"></div>
+      <div class="gauge-row">
+        <div class="instrument-panel gauge-panel">
+          <div class="gauge-svg-wrap"><svg id="gauge-adherence" class="gauge-svg" viewBox="0 0 200 115"></svg></div>
+          <div class="gauge-value" id="val-adherence">–</div>
+          <div class="gauge-label">Rule adherence</div>
+        </div>
+        <div class="instrument-panel gauge-panel">
+          <div class="gauge-svg-wrap"><svg id="gauge-winrate" class="gauge-svg" viewBox="0 0 200 115"></svg></div>
+          <div class="gauge-value" id="val-winrate">–</div>
+          <div class="gauge-label">Win rate</div>
+        </div>
+        <div class="instrument-panel readout-panel">
+          <div class="readout-value" id="val-pnl">₹0</div>
+          <div class="readout-label">Net P&amp;L, after charges</div>
+          <svg class="spark" id="spark-pnl" viewBox="0 0 200 34" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="instrument-panel streak-panel">
+          <div class="streak-row"><span class="streak-num" id="val-discstreak">0</span><span class="streak-lbl">trades in a row inside your rules</span></div>
+          <div class="streak-row"><span class="streak-num" id="val-avgbreach">0</span><span class="streak-lbl">avg min held past stop</span></div>
+        </div>
+      </div>
+
+      <div class="instrument-panel" style="margin-bottom:14px;">
+        <div class="panel-title">Loss budget for <span id="budget-month">this month</span> — planned losses are meant to be spent</div>
+        <div class="budget-wrap">
+          <div class="budget-track"><div class="budget-fill" id="budget-fill"></div></div>
+          <div class="budget-legend">
+            <span id="budget-spent">₹0 spent</span>
+            <span id="budget-left">₹0 available</span>
+          </div>
+        </div>
+        <div class="budget-note" id="budget-note"></div>
+      </div>
+
+      <div class="instrument-panel chart-panel">
+        <div class="panel-title">Every trade stands alone. Height is the result, colour is whether you followed your rules.</div>
+        <svg id="bars-chart" viewBox="0 0 640 200" style="width:100%;height:auto;"></svg>
+        <div class="bars-key">
+          <span><i class="sw" style="background:var(--green);"></i>Win, rules followed</span>
+          <span><i class="sw" style="background:var(--slate);"></i>Loss inside your plan</span>
+          <span><i class="sw" style="background:var(--rust-loud);"></i>Rule broken</span>
+        </div>
+        <div class="empty-note" id="bars-empty" style="display:none;">Log a trade and it appears here on its own, not as part of a streak.</div>
+      </div>
+
+      <div class="instrument-panel chart-panel">
+        <div class="panel-title">Discipline over your last 10 trades — booking a loss at your stop keeps this line high</div>
+        <svg id="disc-chart" viewBox="0 0 640 180" style="width:100%;height:auto;"></svg>
+        <div class="empty-note" id="disc-empty" style="display:none;">Needs at least three trades.</div>
+      </div>
+
+      <details class="data-block" style="margin-bottom:14px;border-top:none;padding-top:0;">
+        <summary>Show the running P&amp;L total</summary>
+        <div class="data-inner">
+          <div class="calm-warn">This is the chart that makes a necessary loss feel like damage. It is here because you need the number, not because you should watch it.</div>
+          <svg id="pnl-chart" viewBox="0 0 640 220" style="width:100%;height:auto;"></svg>
+          <div class="empty-note" id="chart-empty" style="display:none;">Log at least two trades to see this.</div>
+        </div>
+      </details>
+
+      <div class="instrument-panel" style="margin-bottom:14px;">
+        <div class="panel-title">Win / loss asymmetry — the disposition effect, measured</div>
+        <div class="asym-grid" id="asym-grid"></div>
+        <div class="diagnosis" id="asym-diagnosis"></div>
+      </div>
+
+      <div class="split-row">
+        <div class="instrument-panel">
+          <div class="panel-title">By strategy</div>
+          <table class="strat-table">
+            <thead><tr><th>Strategy</th><th class="num-cell">Trades</th><th class="num-cell">Win rate</th><th class="num-cell">Net P&amp;L</th></tr></thead>
+            <tbody id="strategy-tbody"></tbody>
+          </table>
+          <div class="empty-note" id="strategy-empty" style="display:none;">No trades logged yet.</div>
+        </div>
+        <div class="instrument-panel">
+          <div class="panel-title">Recent rule breaks — information, not a verdict</div>
+          <div id="flagged-list"></div>
+          <div class="empty-note" id="flagged-empty" style="display:none;">None so far. Keep it that way.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRADE LOG -->
+    <section id="tab-log" class="tab-panel">
+      <div class="toolbar">
+        <button class="btn ghost-btn" id="btn-log-new">+ New entry</button>
+      </div>
+      <table class="ledger-table">
+        <thead><tr><th>Date</th><th>Strategy</th><th>Instrument</th><th>Outcome</th><th>P&amp;L</th><th>Rules</th><th></th></tr></thead>
+        <tbody id="log-tbody"></tbody>
+      </table>
+      <div class="empty-note" id="log-empty" style="display:none;">No trades yet. Log your first one from "New entry".</div>
+
+      <details class="data-block" open>
+        <summary>Your data — where it lives, and how to keep it</summary>
+        <div class="data-inner">
+          <div class="field" style="margin-bottom:18px;">
+            <label>Keep a real file copy on your own disk</label>
+            <div class="form-actions">
+              <button type="button" class="btn small" id="btn-file-save">Save to a file</button>
+              <button type="button" class="btn small ghost-btn" id="btn-file-open">Open an existing file</button>
+              <button type="button" class="btn small ghost-btn" id="btn-download">Download a backup</button>
+            </div>
+            <div class="hint" style="margin-top:8px;">"Save to a file" links this journal to a .json file on your disk and writes every later change straight into it. Chrome and Edge support this; other browsers should use "Download a backup" regularly instead.</div>
+            <div class="status-line" id="file-status"></div>
+          </div>
+
+          <div class="field" style="margin-bottom:18px;">
+            <label for="file-input">Load a backup file from anywhere</label>
+            <input type="file" id="file-input" accept=".json,application/json">
+            <div class="hint">Works in every browser. Use this to move your journal to a new computer or a new browser.</div>
+          </div>
+
+          <div class="field" style="margin-bottom:16px;">
+            <label for="csv-out">CSV of all trades — for Excel or Google Sheets</label>
+            <textarea id="csv-out" readonly></textarea>
+            <div class="form-actions">
+              <button type="button" class="btn small ghost-btn" id="btn-csv">Show CSV</button>
+              <button type="button" class="btn small ghost-btn" id="btn-csv-dl">Download CSV</button>
+            </div>
+          </div>
+
+          <div class="field" style="margin-bottom:16px;">
+            <label for="json-out">Backup as text — copy this into a note if you prefer</label>
+            <textarea id="json-out" readonly></textarea>
+            <div class="form-actions"><button type="button" class="btn small ghost-btn" id="btn-json">Show backup text</button></div>
+          </div>
+
+          <div class="field">
+            <label for="json-in">Restore from pasted text — replaces everything</label>
+            <textarea id="json-in" placeholder='{"trades":[...],"reviews":[...]}'></textarea>
+            <div class="form-actions">
+              <button type="button" class="btn small" id="btn-restore">Restore from text</button>
+              <button type="button" class="btn small danger" id="btn-reset">Clear journal</button>
+            </div>
+            <div class="status-line" id="data-status"></div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- NEW ENTRY -->
+    <section id="tab-new" class="tab-panel">
+      <div class="locked-note" id="locked-note" style="display:none;"></div>
+      <form id="trade-form">
+        <div class="form-grid">
+          <div class="field"><label for="f-date">Date</label><input type="date" id="f-date" required></div>
+          <div class="field"><label for="f-strategy">Strategy</label>
+            <select id="f-strategy">
+              <option>Short Iron Butterfly</option><option>Naked Call</option><option>Naked Put</option>
+              <option>Long Straddle</option><option>Short Straddle</option><option>Short Strangle</option>
+              <option>Iron Condor</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-instrument">Instrument</label><input type="text" id="f-instrument" placeholder="NIFTY, BANKNIFTY, ..."></div>
+          <div class="field"><label for="f-size">Position size / lots</label><input type="text" id="f-size" placeholder="e.g. 2 lots"></div>
+          <div class="field"><label for="f-premium">Premium or credit received (₹)</label><input type="number" inputmode="decimal" id="f-premium" step="any"></div>
+          <div class="field"><label for="f-maxloss">Max planned loss (₹)</label><input type="number" inputmode="decimal" id="f-maxloss" step="any"></div>
+          <div class="field full"><label for="f-exitplan">Exit condition, written before you entered</label><input type="text" id="f-exitplan" placeholder="e.g. exit if loss crosses ₹8,000 or 2 hours before expiry"></div>
+        </div>
+
+        <div class="checklist-block">
+          <div class="checklist-title">Pre-trade checklist — what was actually true before you entered</div>
+          <div class="switch-row"><span>Max loss was defined in rupees before I entered</span>
+            <label class="switch"><input type="checkbox" id="c-maxloss"><span class="switch-track"></span></label></div>
+          <div class="switch-row"><span>Exit price or condition was written down before I entered</span>
+            <label class="switch"><input type="checkbox" id="c-exit"><span class="switch-track"></span></label></div>
+          <div class="switch-row"><span>Position was sized per my risk rules</span>
+            <label class="switch"><input type="checkbox" id="c-size"><span class="switch-track"></span></label></div>
+          <div class="switch-row"><span>This trade fits my tested system — it wasn't an improvised experiment</span>
+            <label class="switch"><input type="checkbox" id="c-system"><span class="switch-track"></span></label></div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field"><label for="f-outcome">Outcome</label>
+            <select id="f-outcome"><option value="win">Win</option><option value="loss">Loss</option><option value="breakeven">Breakeven</option></select></div>
+          <div class="field"><label for="f-pnl">Realized amount (₹)</label><input type="text" inputmode="decimal" id="f-pnl" required autocomplete="off" placeholder="amount only, no minus sign">
+            <div class="hint" id="pnl-hint">Enter it as a plain number. Whether it counts as a gain or a loss comes from the Outcome you picked above.</div></div>
+          <div class="field full"><label for="f-exitreason">Exit reason</label>
+            <select id="f-exitreason">
+              <option>Booked at target as planned</option><option>Stop hit as planned</option>
+              <option>Held past my planned exit</option><option>Exited early from fear or hope</option><option>Other</option>
+            </select></div>
+          <div class="field full"><label for="f-notes">What were you feeling? What tempted you to deviate, if anything?</label><textarea id="f-notes"></textarea></div>
+          <div class="field full"><label for="f-tags">Tags (comma separated, optional)</label><input type="text" id="f-tags" placeholder="e.g. high IV, event day, hedge"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn" id="btn-submit">Log entry</button>
+          <button type="button" class="btn ghost-btn" id="btn-cancel-edit" style="display:none;">Cancel</button>
+          <span class="flag-preview" id="flag-preview"></span>
+        </div>
+      </form>
+    </section>
+
+    <!-- WEEKLY REVIEW -->
+    <section id="tab-review" class="tab-panel">
+      <form id="review-form" style="margin-bottom:22px;">
+        <div class="form-grid">
+          <div class="field"><label for="r-date">Week of</label><input type="date" id="r-date" required></div>
+        </div>
+        <div class="field full" style="margin-bottom:12px;">
+          <label for="r-text">Weekly reflection</label>
+          <textarea id="r-text" style="min-height:110px;" placeholder="What pattern showed up this week? Which trades were system trades and which were experiments? Where did the checklist save you, and where did you skip it?" required></textarea>
+        </div>
+        <button type="submit" class="btn">Save reflection</button>
+      </form>
+      <div class="instrument-panel">
+        <div class="panel-title">Past reflections</div>
+        <div id="review-list"></div>
+        <div class="empty-note" id="review-empty" style="display:none;">No reflections yet.</div>
+      </div>
+    </section>
+
+    <!-- MY RULES -->
+    <section id="tab-rules" class="tab-panel">
+      <div class="instrument-panel" style="margin-bottom:14px;">
+        <div class="panel-title">Set these once, when you are calm. The calculator uses them on every position.</div>
+        <div class="form-grid">
+          <div class="field"><label for="s-capital">Trading capital (₹)</label><input type="number" inputmode="decimal" id="s-capital" step="any" min="0" placeholder="e.g. 300000">
+            <div class="hint">Only the capital you have allocated to F&amp;O, not your whole net worth.</div></div>
+          <div class="field"><label for="s-riskpct">Max risk per trade (% of capital)</label><input type="number" inputmode="decimal" id="s-riskpct" step="any" min="0" max="100" value="2">
+            <div class="hint">1–2% is the conventional range. Higher means a losing run can compound faster than you can recover.</div></div>
+          <div class="field"><label for="s-winmult">Stop as a multiple of your average win</label><input type="number" inputmode="decimal" id="s-winmult" step="any" min="0" value="1.5">
+            <div class="hint">At 1.5, no single loss can erase more than one and a half average wins. This is the cap that directly counters the asymmetry you described.</div></div>
+          <div class="field"><label for="s-creditmult">Stop as a multiple of credit received</label><input type="number" inputmode="decimal" id="s-creditmult" step="any" min="0" value="1.5">
+            <div class="hint">A common convention among premium sellers. At 1.5, you close once the position has lost one and a half times what you collected.</div></div>
+          <div class="field"><label for="s-monthbudget">Monthly loss budget (₹, optional)</label><input type="number" inputmode="decimal" id="s-monthbudget" step="any" min="0" placeholder="leave blank to derive it">
+            <div class="hint">The total loss you have decided is a normal cost of doing this each month. Leave blank and it is set to five times your per-trade stop. A loss inside this budget is the system working, not a setback.</div></div>
+          <div class="field"><label for="s-maxdaily">Daily loss limit (₹, optional)</label><input type="number" inputmode="decimal" id="s-maxdaily" step="any" min="0" placeholder="e.g. 4000">
+            <div class="hint">When the day's realised losses reach this, you stop trading for the day. The dashboard will tell you when you hit it.</div></div>
+          <div class="field"><label for="s-holdwindow">Holding window</label>
+            <select id="s-holdwindow">
+              <option value="same-day">Same day — close before market close</option>
+              <option value="2-days">Up to 2 days</option>
+              <option value="to-expiry">Hold to expiry</option>
+              <option value="none">No fixed window</option>
+            </select>
+            <div class="hint">You said you are neither intraday nor long-hold. Pick the window now so "I will hold if I want to hold" becomes a decision you already made.</div></div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn" id="btn-save-settings">Save my rules</button>
+          <span class="status-line" id="settings-status" style="margin-top:0;"></span>
+        </div>
+      </div>
+
+      <div class="instrument-panel">
+        <div class="panel-title">What a loss costs you, at your own average</div>
+        <div id="cost-table"></div>
+        <div class="empty-note" id="cost-empty" style="display:none;">Log some trades and this will show what each size of loss costs you in trading days.</div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim">
+  <div class="dialog" role="dialog" aria-modal="true">
+    <h3 id="dlg-title">Confirm</h3>
+    <p id="dlg-body"></p>
+    <div class="dialog-actions">
+      <button class="btn ghost-btn" id="dlg-cancel">Cancel</button>
+      <button class="btn danger" id="dlg-ok">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  let trades=[], reviews=[], positions=[], editingId=null, pendingLocked=null, storageOK=true;
+  const DEFAULT_SETTINGS={capital:null,riskPct:2,winMult:1.5,creditMult:1.5,maxDaily:null,holdWindow:'same-day',checkInMinutes:5,monthlyBudget:null};
+  let settings={...DEFAULT_SETTINGS};
+  const $=(id)=>document.getElementById(id);
+  const esc=(s)=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+  function fmtINR(n){const x=Number(n)||0;return (x<0?'-':'')+'₹'+Math.abs(Math.round(x)).toLocaleString('en-IN');}
+  function fmtDate(d){try{return new Date(d+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return d;}}
+  function fmtDur(ms){
+    const m=Math.floor(ms/60000);
+    if(m<60) return m+' min';
+    return Math.floor(m/60)+'h '+(m%60)+'m';
+  }
+  function nowMinutes(){const d=new Date();return d.getHours()*60+d.getMinutes();}
+  function timeToMinutes(t){if(!t)return null;const p=t.split(':');return Number(p[0])*60+Number(p[1]);}
+
+  // ---------- confirm dialog ----------
+  let dlgResolve=null;
+  function askConfirm(title,body,okLabel){
+    $('dlg-title').textContent=title; $('dlg-body').textContent=body;
+    $('dlg-ok').textContent=okLabel||'Confirm';
+    $('scrim').classList.add('open');
+    return new Promise(res=>{dlgResolve=res;});
+  }
+  function closeDlg(v){$('scrim').classList.remove('open');if(dlgResolve){dlgResolve(v);dlgResolve=null;}}
+  $('dlg-ok').addEventListener('click',()=>closeDlg(true));
+  $('dlg-cancel').addEventListener('click',()=>closeDlg(false));
+  $('scrim').addEventListener('click',e=>{if(e.target===$('scrim'))closeDlg(false);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('scrim').classList.contains('open'))closeDlg(false);});
+
+  // ---------- storage: local browser storage + optional real file ----------
+  const LS_KEY='tradeLogData_v1';
+  let lsOK=false, fileHandle=null, fileTimer=null, _all=null;
+
+  function testLocalStorage(){
+    try{
+      const k='__tl_test__';
+      window.localStorage.setItem(k,'1');
+      window.localStorage.removeItem(k);
+      return true;
+    }catch(e){return false;}
+  }
+  function payload(){
+    return {version:1,savedAt:new Date().toISOString(),trades,reviews,positions,settings};
+  }
+  function readAll(){
+    if(!lsOK)return {};
+    try{
+      const raw=window.localStorage.getItem(LS_KEY);
+      return raw?JSON.parse(raw):{};
+    }catch(e){return {};}
+  }
+  function ensureLoaded(){if(_all===null)_all=readAll();return _all;}
+  async function loadKey(key,fallback){
+    const a=ensureLoaded();
+    return (a&&a[key]!==undefined&&a[key]!==null)?a[key]:fallback;
+  }
+  async function saveKey(){
+    const data=payload();
+    if(lsOK){
+      try{window.localStorage.setItem(LS_KEY,JSON.stringify(data));}
+      catch(e){storageOK=false;showStorageWarn('Local storage is full or blocked, so the last change was not saved. Download a backup now.');}
+    }
+    if(fileHandle)scheduleFileWrite(data);
+    stampSaved();
+  }
+  function stampSaved(){
+    const el=$('save-stamp');
+    if(!el)return;
+    const bits=[];
+    if(lsOK)bits.push('saved in this browser');
+    if(fileHandle)bits.push('mirrored to '+fileHandle.name);
+    if(!bits.length)bits.push('not saved anywhere yet');
+    el.textContent=bits.join(' \u00b7 ')+' \u00b7 '+new Date().toLocaleTimeString();
+  }
+  function showStorageWarn(msg){
+    const el=$('storage-warn');
+    el.style.display='block';
+    el.textContent=msg||'This browser will not let the page store data locally. Safari blocks it for files opened from disk \u2014 open this file in Chrome, Edge or Firefox instead. Until then nothing you enter will survive closing the tab, so use "Save to a file" below.';
+  }
+
+  // ---- real file persistence (Chrome, Edge, and other Chromium browsers) ----
+  function fsSupported(){return typeof window.showSaveFilePicker==='function';}
+  const JSON_TYPES=[{description:'Trade log data',accept:{'application/json':['.json']}}];
+
+  function scheduleFileWrite(data){
+    clearTimeout(fileTimer);
+    fileTimer=setTimeout(async ()=>{
+      try{
+        const w=await fileHandle.createWritable();
+        await w.write(JSON.stringify(data,null,2));
+        await w.close();
+        setFileStatus('Written to '+fileHandle.name+' at '+new Date().toLocaleTimeString());
+      }catch(e){
+        setFileStatus('Could not write to the file. Re-pick it with "Save to a file".',true);
+      }
+    },700);
+  }
+  function setFileStatus(msg,isErr){
+    const el=$('file-status');
+    if(!el)return;
+    el.textContent=msg;
+    el.className='status-line'+(isErr?' err':'');
+    stampSaved();
+  }
+  async function chooseSaveFile(){
+    if(!fsSupported()){
+      setFileStatus('This browser cannot write directly to a file. Use "Download a backup" and keep the file yourself.',true);
+      return;
+    }
+    try{
+      fileHandle=await window.showSaveFilePicker({suggestedName:'trade-log.json',types:JSON_TYPES});
+      await saveKey();
+      setFileStatus('Linked to '+fileHandle.name+'. Every change from now on is written straight to that file.');
+    }catch(e){}
+  }
+  function applyPayload(data){
+    if(!data||typeof data!=='object')throw new Error('empty');
+    trades=Array.isArray(data.trades)?data.trades:[];
+    reviews=Array.isArray(data.reviews)?data.reviews:[];
+    positions=Array.isArray(data.positions)?data.positions:[];
+    settings={...DEFAULT_SETTINGS,...(data.settings&&typeof data.settings==='object'?data.settings:{})};
+  }
+  async function openExistingFile(){
+    if(typeof window.showOpenFilePicker!=='function'){
+      setFileStatus('This browser cannot open a file this way. Use the file chooser below instead.',true);
+      return;
+    }
+    try{
+      const [h]=await window.showOpenFilePicker({types:JSON_TYPES});
+      const f=await h.getFile();
+      applyPayload(JSON.parse(await f.text()));
+      fileHandle=h;
+      await saveKey();
+      fillSettingsForm();renderCalc();renderCostTable();renderAll();
+      setFileStatus('Loaded '+trades.length+' trades from '+h.name+'. Changes now write back to it.');
+    }catch(e){
+      if(e&&e.name!=='AbortError')setFileStatus('That file could not be read as a trade log backup.',true);
+    }
+  }
+  function downloadBackup(){
+    try{
+      const blob=new Blob([JSON.stringify(payload(),null,2)],{type:'application/json'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      const d=new Date().toISOString().slice(0,10);
+      a.href=url;a.download='trade-log-'+d+'.json';
+      document.body.appendChild(a);a.click();document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+      setFileStatus('Backup downloaded. Keep it somewhere that is not this computer.');
+    }catch(e){
+      setFileStatus('Download failed. Copy the text from the backup box instead.',true);
+    }
+  }
+  function downloadCSV(){
+    try{
+      const blob=new Blob([buildCSV()],{type:'text/csv'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url;a.download='trade-log.csv';
+      document.body.appendChild(a);a.click();document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+      setFileStatus('CSV downloaded.');
+    }catch(e){setFileStatus('Download failed. Copy the CSV text instead.',true);}
+  }
+  function loadFromInput(ev){
+    const f=ev.target.files&&ev.target.files[0];
+    if(!f)return;
+    const r=new FileReader();
+    r.onload=async ()=>{
+      try{
+        applyPayload(JSON.parse(r.result));
+        await saveKey();
+        fillSettingsForm();renderCalc();renderCostTable();renderAll();
+        setFileStatus('Loaded '+trades.length+' trades from '+f.name+'.');
+      }catch(e){setFileStatus('That file is not a valid trade log backup.',true);}
+    };
+    r.onerror=()=>setFileStatus('Could not read that file.',true);
+    r.readAsText(f);
+    ev.target.value='';
+  }
+  const saveTrades=()=>saveKey('trades',trades);
+  const saveReviews=()=>saveKey('reviews',reviews);
+  const savePositions=()=>saveKey('positions',positions);
+  const saveSettings=()=>saveKey('settings',settings);
+
+  // ---------- performance baselines used by the stop calculator ----------
+  function baselines(){
+    const wins=trades.filter(t=>Number(t.pnl)>0).map(t=>Number(t.pnl));
+    const losses=trades.filter(t=>Number(t.pnl)<0).map(t=>Math.abs(Number(t.pnl)));
+    const avgWin=wins.length?wins.reduce((a,b)=>a+b,0)/wins.length:0;
+    const avgLoss=losses.length?losses.reduce((a,b)=>a+b,0)/losses.length:0;
+    const days=new Set(trades.map(t=>t.date)).size;
+    const net=trades.reduce((s,t)=>s+Number(t.pnl||0),0);
+    const perDay=days?net/days:0;
+    return {avgWin,avgLoss,largestWin:wins.length?Math.max(...wins):0,
+      largestLoss:losses.length?Math.max(...losses):0,perDay,days,wins:wins.length,losses:losses.length};
+  }
+
+  // The strict rule: your stop is the SMALLEST of every cap that applies.
+  function computeStop(credit,structMax){
+    const b=baselines();
+    const caps=[];
+    if(settings.capital&&settings.riskPct)
+      caps.push({label:settings.riskPct+'% of your capital',value:settings.capital*settings.riskPct/100});
+    if(b.avgWin>0&&settings.winMult)
+      caps.push({label:settings.winMult+'× your average win of '+fmtINR(b.avgWin),value:b.avgWin*settings.winMult});
+    if(credit&&settings.creditMult)
+      caps.push({label:settings.creditMult+'× the credit you received',value:Math.abs(credit)*settings.creditMult});
+    if(structMax)
+      caps.push({label:'structure max loss from your platform',value:Math.abs(structMax)});
+    if(!caps.length)return {stop:null,caps:[],binding:null,baselines:b};
+    const binding=caps.reduce((m,c)=>c.value<m.value?c:m,caps[0]);
+    return {stop:Math.round(binding.value),caps,binding,baselines:b};
+  }
+
+  // ---------- rule logic (closed trades) ----------
+  function isRuleFollowed(t){
+    if(t.breached)return false;
+    const c=t.checklist||{};
+    const ok=c.maxLossDefined&&c.exitWritten&&c.sizedPerRules&&c.withinTestedSystem;
+    const bad=t.exitReason==='Held past my planned exit'||t.exitReason==='Exited early from fear or hope';
+    return !!ok&&!bad;
+  }
+  function breachLabel(t){
+    if(!t.breached)return '';
+    const sec=t.breachSeconds||0;
+    if(sec<60)return 'crossed your stop for '+Math.max(1,sec)+' seconds';
+    return 'held '+fmtDur(sec*1000)+' past your stop';
+  }
+  function reasonsForFlag(t){
+    const c=t.checklist||{},r=[];
+    if(!c.maxLossDefined)r.push('No max loss defined before entry');
+    if(!c.exitWritten)r.push('Exit condition not written beforehand');
+    if(!c.sizedPerRules)r.push('Position not sized per risk rules');
+    if(!c.withinTestedSystem)r.push('Outside tested system');
+    if(t.exitReason==='Held past my planned exit')r.push('Held past planned exit');
+    if(t.exitReason==='Exited early from fear or hope')r.push('Exited early from fear or hope');
+    if(t.breached)r.push('Monitored live: '+breachLabel(t));
+    return r.join(' · ');
+  }
+
+  // ---------- live position evaluation ----------
+  function latestUpdate(p){return p.updates&&p.updates.length?p.updates[p.updates.length-1]:null;}
+  function evalPosition(p){
+    const last=latestUpdate(p);
+    const pnl=last?Number(last.pnl):null;
+    const maxLoss=p.maxLoss?Math.abs(Number(p.maxLoss)):null;
+    const reasons=[];
+    if(!maxLoss)reasons.push('No max loss was defined when you opened this. It is undefined-risk by construction.');
+    if(!p.exitRule)reasons.push('No exit rule was written when you opened this.');
+    if(!p.sizedPerRules)reasons.push('You marked this as not sized per your risk rules.');
+    if(!p.withinTestedSystem)reasons.push('You marked this as outside your tested system — an experiment.');
+    if(pnl!==null&&maxLoss&&pnl<=-maxLoss)
+      reasons.push('Loss is '+fmtINR(Math.abs(pnl))+' against your stated max of '+fmtINR(maxLoss)+'. Your own rule says close it.');
+    if(p.plannedExitTime){
+      const pe=timeToMinutes(p.plannedExitTime);
+      if(pe!==null&&nowMinutes()>pe)reasons.push('It is past your planned exit time of '+p.plannedExitTime+'.');
+    }
+    if(settings.holdWindow==='same-day'){
+      const openedDay=new Date(p.openedAt).toDateString();
+      const today=new Date().toDateString();
+      if(openedDay!==today)
+        reasons.push('Your holding window is same-day and this was opened on '+new Date(p.openedAt).toLocaleDateString('en-IN',{day:'2-digit',month:'short'})+'. It is already past its window.');
+      else if(nowMinutes()>15*60+10)
+        reasons.push('Your holding window is same-day and it is past 3:10 pm. This position should already be closed.');
+    }
+    if(settings.holdWindow==='2-days'&&Date.now()-p.openedAt>2*86400000)
+      reasons.push('Your holding window is two days and this has been open longer than that.');
+    const target=p.target?Math.abs(Number(p.target)):null;
+    if(!target)reasons.push('No profit target was set, so there is nothing stopping you booking this winner early.');
+    let level='ok';
+    if(reasons.length)level='violation';
+    else if(pnl!==null&&target&&pnl>=target)level='target';
+    else if(pnl!==null&&maxLoss&&pnl<=-0.7*maxLoss)level='watch';
+    const pct=(pnl!==null&&maxLoss&&pnl<0)?Math.min(100,Math.abs(pnl)/maxLoss*100):0;
+    const tgtPct=(pnl!==null&&target&&pnl>0)?Math.min(100,pnl/target*100):0;
+    const b=baselines();
+    const erased=(pnl!==null&&pnl<0&&b.avgWin>0)?Math.abs(pnl)/b.avgWin:0;
+    const daysCost=(pnl!==null&&pnl<0&&b.perDay>0)?Math.abs(pnl)/b.perDay:0;
+    return {level,reasons,pnl,maxLoss,pct,target,tgtPct,erased,daysCost};
+  }
+  function refreshBreachState(){
+    let changed=false;
+    positions.forEach(p=>{
+      const ev=evalPosition(p);
+      if(ev.level==='violation'&&!p.firstBreachAt){p.firstBreachAt=Date.now();changed=true;}
+    });
+    if(changed)savePositions();
+  }
+
+  // ---------- stats ----------
+  function computeStats(){
+    const sorted=[...trades].sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
+    const total=sorted.length;
+    const wins=sorted.filter(t=>t.outcome==='win').length;
+    const winRate=total?wins/total*100:0;
+    const netPnl=sorted.reduce((s,t)=>s+Number(t.pnl||0),0);
+    const followed=sorted.map(isRuleFollowed);
+    const adherenceRate=total?followed.filter(Boolean).length/total*100:0;
+    let winStreak=0;for(let i=sorted.length-1;i>=0;i--){if(sorted[i].outcome==='win')winStreak++;else break;}
+    let discStreak=0;for(let i=sorted.length-1;i>=0;i--){if(followed[i])discStreak++;else break;}
+    const breaches=sorted.filter(t=>t.breached&&t.breachMinutes>0).map(t=>t.breachMinutes);
+    const avgBreach=breaches.length?Math.round(breaches.reduce((a,b)=>a+b,0)/breaches.length):0;
+    let run=0;
+    const cumulative=sorted.map(t=>{run+=Number(t.pnl||0);return {date:t.date,value:run,flagged:!isRuleFollowed(t)};});
+    const byStrategy={};
+    sorted.forEach(t=>{const k=t.strategy||'Other';byStrategy[k]=byStrategy[k]||{count:0,wins:0,net:0};
+      byStrategy[k].count++;if(t.outcome==='win')byStrategy[k].wins++;byStrategy[k].net+=Number(t.pnl||0);});
+    const flagged=sorted.filter(t=>!isRuleFollowed(t)).reverse().slice(0,5);
+    const cutoff=new Date(Date.now()-14*864e5).toISOString().slice(0,10);
+    const recentBreaks=sorted.filter(t=>t.date>=cutoff&&!isRuleFollowed(t)).length;
+    return {total,winRate,netPnl,adherenceRate,winStreak,discStreak,avgBreach,cumulative,byStrategy,flagged,recentBreaks};
+  }
+
+  // ---------- drawing ----------
+  function polar(cx,cy,r,a){const rad=a*Math.PI/180;return{x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)};}
+  function arcPath(cx,cy,r,s,e){const a=polar(cx,cy,r,s),b=polar(cx,cy,r,e);return `M ${a.x.toFixed(2)} ${a.y.toFixed(2)} A ${r} ${r} 0 ${(e-s)>180?1:0} 1 ${b.x.toFixed(2)} ${b.y.toFixed(2)}`;}
+  function drawGauge(el,value,color){
+    const cx=100,cy=95,r=70;
+    const endA=180+(Math.max(0,Math.min(100,value))/100)*180;
+    let ticks='';
+    [0,25,50,75,100].forEach(v=>{const a=180+v/100*180,p1=polar(cx,cy,r+6,a),p2=polar(cx,cy,r+13,a);
+      ticks+=`<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" class="gauge-tick"/>`;});
+    el.innerHTML=`<path d="${arcPath(cx,cy,r,180,360)}" class="gauge-bg"/><path d="${arcPath(cx,cy,r,180,endA)}" class="gauge-fg" style="stroke:${color}"/>${ticks}`;
+  }
+  function drawSpark(el,pts){
+    if(pts.length<2){el.innerHTML='';return;}
+    const vals=pts.map(p=>p.value),min=Math.min(0,...vals),max=Math.max(0,...vals),range=(max-min)||1,w=200,h=34,step=w/(pts.length-1);
+    el.innerHTML=`<path d="${pts.map((p,i)=>`${i?'L':'M'} ${(i*step).toFixed(1)} ${(h-((p.value-min)/range)*h).toFixed(1)}`).join(' ')}" fill="none" stroke="var(--brass)" stroke-width="1.5"/>`;
+  }
+  function drawBars(){
+    const svg=$('bars-chart'),note=$('bars-empty');
+    const sorted=[...trades].sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id)).slice(-30);
+    if(!sorted.length){svg.innerHTML='';note.style.display='block';return;}
+    note.style.display='none';
+    const w=640,h=200,padL=56,padR=14,padT=16,padB=22;
+    const iW=w-padL-padR,iH=h-padT-padB;
+    const vals=sorted.map(t=>Number(t.pnl||0));
+    const plan=sorted.map(t=>t.maxPlannedLoss?Math.abs(Number(t.maxPlannedLoss)):0).filter(v=>v>0);
+    const avgPlan=plan.length?plan.reduce((a,b)=>a+b,0)/plan.length:0;
+    let max=Math.max(1,...vals.map(v=>v>0?v:0));
+    let min=Math.min(-1,...vals.map(v=>v<0?v:0),avgPlan?-avgPlan*1.15:-1);
+    const yOf=v=>padT+iH-((v-min)/(max-min))*iH;
+    const slot=iW/sorted.length, bw=Math.max(3,Math.min(26,slot*0.62));
+    const parts=[];
+    if(avgPlan>0){
+      const y0=yOf(0),y1=yOf(-avgPlan);
+      parts.push(`<rect x="${padL}" y="${y0.toFixed(1)}" width="${iW}" height="${(y1-y0).toFixed(1)}" class="plan-band"/>`);
+      parts.push(`<line x1="${padL}" y1="${y1.toFixed(1)}" x2="${w-padR}" y2="${y1.toFixed(1)}" class="plan-edge"/>`);
+      parts.push(`<text x="${padL-6}" y="${(y1+3).toFixed(1)}" class="axis-label" text-anchor="end">${fmtINR(-Math.round(avgPlan))}</text>`);
+      parts.push(`<text x="${w-padR}" y="${(y1+14).toFixed(1)}" class="axis-label" text-anchor="end">your typical planned stop</text>`);
+    }
+    const zy=yOf(0);
+    parts.push(`<line x1="${padL}" y1="${zy.toFixed(1)}" x2="${w-padR}" y2="${zy.toFixed(1)}" class="zero-line"/>`);
+    parts.push(`<text x="${padL-6}" y="${(zy+3).toFixed(1)}" class="axis-label" text-anchor="end">0</text>`);
+    sorted.forEach((t,i)=>{
+      const v=Number(t.pnl||0);
+      const ok=isRuleFollowed(t);
+      const cls=!ok?'bar-break':(v>=0?'bar-win':'bar-calm');
+      const x=padL+i*slot+(slot-bw)/2;
+      const y=v>=0?yOf(v):zy;
+      const bh=Math.max(1.5,Math.abs(yOf(v)-zy));
+      parts.push(`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="2" class="${cls}"><title>${esc(fmtDate(t.date))} · ${esc(fmtINR(v))} · ${ok?'rules followed':'rule broken'}</title></rect>`);
+    });
+    svg.innerHTML=parts.join('');
+  }
+
+  function drawDiscipline(){
+    const svg=$('disc-chart'),note=$('disc-empty');
+    const sorted=[...trades].sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
+    if(sorted.length<3){svg.innerHTML='';note.style.display='block';return;}
+    note.style.display='none';
+    const flags=sorted.map(isRuleFollowed);
+    const roll=flags.map((_,i)=>{
+      const from=Math.max(0,i-9);
+      const win=flags.slice(from,i+1);
+      return win.filter(Boolean).length/win.length*100;
+    });
+    const w=640,h=180,padL=46,padR=14,padT=16,padB=20;
+    const iW=w-padL-padR,iH=h-padT-padB;
+    const xOf=i=>padL+(roll.length===1?iW/2:i*(iW/(roll.length-1)));
+    const yOf=v=>padT+iH-(v/100)*iH;
+    const parts=[];
+    [100,75,50,25,0].forEach(v=>{
+      const y=yOf(v);
+      parts.push(`<line x1="${padL}" y1="${y.toFixed(1)}" x2="${w-padR}" y2="${y.toFixed(1)}" class="ledger-rule"/>`);
+      parts.push(`<text x="${padL-6}" y="${(y+3).toFixed(1)}" class="axis-label" text-anchor="end">${v}%</text>`);
+    });
+    const line=roll.map((v,i)=>`${i?'L':'M'} ${xOf(i).toFixed(1)} ${yOf(v).toFixed(1)}`).join(' ');
+    parts.push(`<path d="${line} L ${xOf(roll.length-1).toFixed(1)} ${yOf(0).toFixed(1)} L ${xOf(0).toFixed(1)} ${yOf(0).toFixed(1)} Z" class="disc-area"/>`);
+    parts.push(`<path d="${line}" class="disc-line"/>`);
+    svg.innerHTML=parts.join('');
+  }
+
+  function perTradeStopCap(){
+    const r=computeStop(null,null);
+    return r.stop||0;
+  }
+  function renderBudget(){
+    const now=new Date();
+    const ym=now.toISOString().slice(0,7);
+    $('budget-month').textContent=now.toLocaleDateString('en-IN',{month:'long'});
+    const monthTrades=trades.filter(t=>(t.date||'').slice(0,7)===ym);
+    const spent=monthTrades.filter(t=>Number(t.pnl)<0).reduce((s,t)=>s+Math.abs(Number(t.pnl)),0);
+    const cap=perTradeStopCap();
+    const budget=settings.monthlyBudget||(cap?cap*5:0);
+    const fill=$('budget-fill');
+    if(!budget){
+      fill.style.width='0%';
+      $('budget-spent').textContent=fmtINR(spent)+' of losses this month';
+      $('budget-left').textContent='no budget set';
+      $('budget-note').textContent='Set your capital or a monthly loss budget under "My rules" and this will show how much planned loss you still have available.';
+      return;
+    }
+    const pct=Math.min(100,spent/budget*100);
+    fill.style.width=pct.toFixed(0)+'%';
+    fill.style.background=pct>=100?'var(--rust-loud)':(pct>=80?'var(--amber)':'var(--slate)');
+    $('budget-spent').textContent=fmtINR(spent)+' spent';
+    $('budget-left').textContent=fmtINR(Math.max(0,budget-spent))+' available';
+    const perStop=cap?Math.floor(Math.max(0,budget-spent)/cap):0;
+    if(pct>=100)$('budget-note').textContent='You have used the whole budget you set for this month. That is the signal to stop and review, not to trade your way out.';
+    else if(spent===0)$('budget-note').textContent='You have '+fmtINR(budget)+' of planned loss available this month — roughly '+perStop+' trades stopped out at your cap. Spending it correctly is not failure.';
+    else $('budget-note').textContent='Room for about '+perStop+' more trades stopped out at your cap. A loss taken at your stop spends this budget as designed.';
+  }
+
+  function drawChart(cum){
+    const svg=$('pnl-chart'),note=$('chart-empty');
+    if(cum.length<2){svg.innerHTML='';note.style.display='block';return;}
+    note.style.display='none';
+    const w=640,h=220,padL=52,padR=16,padT=14,padB=14;
+    const vals=cum.map(p=>p.value);let min=Math.min(0,...vals),max=Math.max(0,...vals);
+    if(min===max){min-=100;max+=100;}
+    const pad=(max-min)*0.1;min-=pad;max+=pad;
+    const iW=w-padL-padR,iH=h-padT-padB,xStep=iW/(cum.length-1);
+    const yOf=v=>padT+iH-((v-min)/(max-min))*iH, xOf=i=>padL+i*xStep;
+    const parts=[];
+    for(let i=0;i<=3;i++){const y=padT+(iH/3)*i;parts.push(`<line x1="${padL}" y1="${y.toFixed(1)}" x2="${w-padR}" y2="${y.toFixed(1)}" class="ledger-rule"/>`);}
+    if(min<0&&max>0){const zy=yOf(0);
+      parts.push(`<line x1="${padL}" y1="${zy.toFixed(1)}" x2="${w-padR}" y2="${zy.toFixed(1)}" class="zero-line"/>`);
+      parts.push(`<text x="${padL-6}" y="${(zy+3).toFixed(1)}" class="axis-label" text-anchor="end">0</text>`);}
+    parts.push(`<text x="${padL-6}" y="${(yOf(max)+3).toFixed(1)}" class="axis-label" text-anchor="end">${fmtINR(max)}</text>`);
+    parts.push(`<text x="${padL-6}" y="${(yOf(min)+3).toFixed(1)}" class="axis-label" text-anchor="end">${fmtINR(min)}</text>`);
+    parts.push(`<path d="${cum.map((p,i)=>`${i?'L':'M'} ${xOf(i).toFixed(1)} ${yOf(p.value).toFixed(1)}`).join(' ')}" class="pnl-line"/>`);
+    cum.forEach((p,i)=>{if(p.flagged)parts.push(`<circle cx="${xOf(i).toFixed(1)}" cy="${yOf(p.value).toFixed(1)}" r="4" class="flag-dot"><title>${esc(fmtDate(p.date))}: rule broken</title></circle>`);});
+    svg.innerHTML=parts.join('');
+  }
+
+  // ---------- render: live ----------
+  function renderLive(){
+    refreshBreachState();
+    renderTimer();renderTip(false);
+    const wrap=$('open-positions');
+    $('live-empty').style.display=positions.length?'none':'block';
+    const badge=$('live-badge');
+    const viol=positions.filter(p=>evalPosition(p).level==='violation').length;
+    if(viol){badge.style.display='inline-block';badge.textContent=viol;}else{badge.style.display='none';}
+    const bb=$('botnav-badge');
+    if(bb){bb.textContent=viol||'';bb.className='bn-badge'+(viol?' on':'');}
+
+    wrap.innerHTML=positions.map(p=>{
+      const ev=evalPosition(p);
+      const pnlTxt=ev.pnl===null?'—':fmtINR(ev.pnl);
+      const pnlCls=ev.pnl===null?'':(ev.pnl>=0?'pos':'neg');
+      const last=latestUpdate(p);
+      let verdictHead,verdictBody='',verdictCls=ev.level;
+      if(ev.level==='violation'){
+        verdictHead='You are outside the rules you set for this trade';
+        verdictBody='<ul>'+ev.reasons.map(r=>`<li>${esc(r)}</li>`).join('')+'</ul>';
+        if(p.firstBreachAt)verdictBody+=`<div style="margin-top:8px;">Time outside your own rules: <span class="breach-clock js-breach" data-id="${p.id}">${esc(fmtDur(Date.now()-p.firstBreachAt))}</span></div>`;
+      }else if(ev.level==='target'){
+        verdictHead='Target reached — close it';
+        verdictCls='ok';
+        verdictBody='<div>You are at or past the target you set at open. This is the exit you already decided on. Holding for more is a new trade you have not planned.</div>';
+      }else if(ev.level==='watch'){
+        verdictHead='Approaching your stop';
+        verdictBody=`<div>You are at ${Math.round(ev.pct)}% of your stated max loss. Decide now, while you still can, whether you close at the stop.</div>`;
+      }else{
+        verdictHead='Inside your rules';
+        if(ev.pnl!==null&&ev.pnl>0&&ev.target){
+          verdictBody=`<div>You are at ${Math.round(ev.tgtPct)}% of your target of ${esc(fmtINR(ev.target))}. Booking here is the habit that shrinks your winners. Your rule says hold to target or stop.</div>`;
+        }else{
+          verdictBody='<div>Nothing to do. Do not improvise a hedge or an adjustment that is not part of this plan.</div>';
+        }
+      }
+      const staleMs=last?Date.now()-last.t:null;
+      const stale=(staleMs===null||staleMs>15*60000);
+      const barColor=ev.level==='violation'?'var(--rust-loud)':(ev.level==='watch'?'var(--amber)':'var(--green)');
+      return `
+      <div class="pos-card ${ev.level}">
+        <div class="pos-head">
+          <div>
+            <div class="pos-name">${esc(p.strategy)}${p.instrument?' · '+esc(p.instrument):''}</div>
+            <div class="pos-meta">Opened ${esc(new Date(p.openedAt).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}))} · open <span class="js-elapsed" data-id="${p.id}">${esc(fmtDur(Date.now()-p.openedAt))}</span>${p.positionSize?' · '+esc(p.positionSize):''}</div>
+          </div>
+          <div>
+            <div class="pos-pnl ${pnlCls}">${esc(pnlTxt)}</div>
+            <div class="pos-pnl-sub">${p.maxLoss?'max loss '+esc(fmtINR(-Math.abs(p.maxLoss))):'no max loss set'}</div>
+          </div>
+        </div>
+
+        ${(p.maxLoss||ev.target)?`<div class="dual-bars">
+          ${ev.target?`<div class="bar-line"><span>To target</span>
+            <div class="bar-track"><div class="bar-fill" style="width:${ev.tgtPct.toFixed(0)}%;background:var(--green);"></div></div>
+            <span class="bar-num">${esc(fmtINR(ev.target))}</span></div>`:''}
+          ${p.maxLoss?`<div class="bar-line"><span>To stop</span>
+            <div class="bar-track"><div class="bar-fill" style="width:${ev.pct.toFixed(0)}%;background:${barColor};"></div></div>
+            <span class="bar-num">${esc(fmtINR(-Math.abs(p.maxLoss)))}</span></div>`:''}
+        </div>`:''}
+
+        ${ev.erased>0
+          ?`<div class="erased">This loss is <strong>${ev.erased.toFixed(1)}</strong> of your average wins${ev.daysCost>0?` — <strong>${ev.daysCost.toFixed(1)}</strong> trading days of your own work`:''}.</div>`
+          :(ev.pnl!==null&&ev.pnl<0?`<div class="erased">Down <strong>${esc(fmtINR(Math.abs(ev.pnl)))}</strong>. Once you have logged some wins this will also show how many of them this loss would erase.</div>`:'')}
+
+        <div class="verdict ${verdictCls}">
+          <div class="verdict-head">${esc(verdictHead)}</div>
+          ${verdictBody}
+        </div>
+
+        ${p.exitRule?`<div class="rule-recall">Your words at open: ${esc(p.exitRule)}</div>`:''}
+        ${stale?`<div class="stale-note js-stale" data-id="${p.id}">${last?'Last updated '+esc(fmtDur(staleMs))+' ago. Update it — a monitor you stop looking at is not a monitor.':'No P&L entered yet. Add one so the monitor can check you.'}</div>`:''}
+
+        <div class="update-row">
+          <div class="field upd-amount"><label for="upd-${p.id}">Current P&amp;L from your broker</label>
+            <input type="text" inputmode="decimal" id="upd-${p.id}" placeholder="amount only, no sign" autocomplete="off"></div>
+          <div class="dir-pair">
+            <button type="button" class="btn dir dir-down" data-act="down" data-id="${p.id}">Down ₹</button>
+            <button type="button" class="btn dir dir-up" data-act="up" data-id="${p.id}">Up ₹</button>
+          </div>
+        </div>
+        <div class="pos-actions">
+          <button type="button" class="btn small ghost-btn" data-act="close" data-id="${p.id}">Close &amp; log</button>
+          <button type="button" class="btn small ghost-btn" data-act="discard" data-id="${p.id}">Discard</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    wrap.querySelectorAll('button[data-act]').forEach(b=>{
+      const id=b.getAttribute('data-id'),act=b.getAttribute('data-act');
+      b.addEventListener('click',()=>{
+        if(act==='down')updatePnl(id,-1);
+        else if(act==='up')updatePnl(id,1);
+        else if(act==='close')closePosition(id);
+        else if(act==='discard')discardPosition(id);
+      });
+    });
+  }
+
+  function tick(){
+    renderTimer();
+    if(!positions.length){clearAlert();return;}
+    checkAlerts();
+    let needFull=false;
+    positions.forEach(p=>{
+      const ev=evalPosition(p);
+      const card=document.querySelector(`.js-elapsed[data-id="${p.id}"]`);
+      if(card)card.textContent=fmtDur(Date.now()-p.openedAt);
+      const br=document.querySelector(`.js-breach[data-id="${p.id}"]`);
+      if(br&&p.firstBreachAt)br.textContent=fmtDur(Date.now()-p.firstBreachAt);
+      if(ev.level==='violation'&&!p.firstBreachAt)needFull=true;
+      const wrapper=document.querySelector(`.js-elapsed[data-id="${p.id}"]`)?.closest('.pos-card');
+      if(wrapper&&!wrapper.classList.contains(ev.level))needFull=true;
+    });
+    if(needFull&&$('tab-live').classList.contains('active'))renderLive();
+  }
+
+  async function updatePnl(id,sign){
+    const p=positions.find(x=>x.id===id);if(!p)return;
+    const inp=$('upd-'+id);
+    if(!inp)return;
+    const raw=String(inp.value).replace(/[^0-9.]/g,'');
+    if(raw===''||isNaN(Number(raw))){
+      inp.placeholder='enter an amount first';
+      try{inp.focus();}catch(e){}
+      return;
+    }
+    p.updates=p.updates||[];
+    p.updates.push({t:Date.now(),pnl:(sign<0?-1:1)*Math.abs(Number(raw))});
+    delete dismissedUntil[p.id];
+    if($('alert-bar').dataset.posId===p.id)clearAlert();
+    refreshBreachState();
+    await savePositions();
+    renderLive();
+  }
+
+  async function discardPosition(id){
+    const ok=await askConfirm('Discard this position?','It will be removed from the monitor without being logged as a trade. Use this only if the trade never actually went through.','Discard');
+    if(!ok)return;
+    positions=positions.filter(p=>p.id!==id);
+    delete dismissedUntil[id];delete lastAlertAt[id];
+    clearAlert();
+    await savePositions();
+    renderLive();
+  }
+
+  function closePosition(id){
+    const p=positions.find(x=>x.id===id);if(!p)return;
+    const ev=evalPosition(p);
+    const breached=!!p.firstBreachAt;
+    const breachSeconds=breached?Math.max(1,Math.round((Date.now()-p.firstBreachAt)/1000)):0;
+    const breachMinutes=Math.round(breachSeconds/60);
+    pendingLocked={
+      positionId:p.id,
+      breached,breachSeconds,breachMinutes,
+      checklist:{
+        maxLossDefined:!!p.maxLoss,
+        exitWritten:!!p.exitRule,
+        sizedPerRules:!!p.sizedPerRules,
+        withinTestedSystem:!!p.withinTestedSystem
+      }
+    };
+    resetForm(true);
+    $('f-date').value=new Date().toISOString().slice(0,10);
+    $('f-strategy').value=p.strategy;
+    $('f-instrument').value=p.instrument||'';
+    $('f-size').value=p.positionSize||'';
+    $('f-premium').value=p.credit??'';
+    $('f-maxloss').value=p.maxLoss??'';
+    $('f-exitplan').value=p.exitRule||'';
+    pendingLocked.target=p.target||null;
+    pendingLocked.structMax=p.structMax||null;
+    pendingLocked.probOfProfit=p.probOfProfit??null;
+    $('c-maxloss').checked=!!p.maxLoss;
+    $('c-exit').checked=!!p.exitRule;
+    $('c-size').checked=!!p.sizedPerRules;
+    $('c-system').checked=!!p.withinTestedSystem;
+    if(ev.pnl!==null){
+      $('f-pnl').value=Math.abs(ev.pnl);
+      $('f-outcome').value=ev.pnl>0?'win':(ev.pnl<0?'loss':'breakeven');
+      updatePnlHint();
+    }
+    if(breached)$('f-exitreason').value='Held past my planned exit';
+    const note=$('locked-note');
+    note.style.display='block';
+    note.textContent=breached
+      ? `Carried over from the monitor: this position went outside the rules you set at open — ${breachLabel({breached:true,breachSeconds:breachSeconds})}. That happened whatever the final number says, so this logs as a rule break. The checklist is filled from what you recorded at open, not from how it feels now.`
+      : 'Carried over from the monitor: the checklist below is filled from what you recorded at open, not from how it feels now.';
+    checklistPreview();
+    switchTab('new');
+  }
+
+  // ---------- render: dashboard / log / reviews ----------
+  function renderDashboard(){
+    const s=computeStats();
+    drawGauge($('gauge-adherence'),s.adherenceRate,'var(--brass)');
+    drawGauge($('gauge-winrate'),s.winRate,'var(--green)');
+    $('val-adherence').textContent=s.total?Math.round(s.adherenceRate)+'%':'–';
+    $('val-winrate').textContent=s.total?Math.round(s.winRate)+'%':'–';
+    const pe=$('val-pnl');pe.textContent=fmtINR(s.netPnl);
+    pe.className='readout-value '+(s.netPnl>=0?'pos':'neg');
+    drawSpark($('spark-pnl'),s.cumulative);
+    $('val-discstreak').textContent=s.discStreak;
+    $('val-avgbreach').textContent=s.avgBreach;
+    renderBudget();drawBars();drawDiscipline();drawChart(s.cumulative);
+
+    renderAsymmetry();
+    const co=$('cooloff');
+    if(s.recentBreaks>=2){
+      co.style.display='block';
+      co.textContent=`${s.recentBreaks} trades in the last two weeks fell outside your rules. Not a comment on your P&L — the money may well be fine. It is the rule-breaking that compounds. Halving your size, or trading only your tested short iron butterfly for a week, is the usual way back.`;
+    }else co.style.display='none';
+
+    const keys=Object.keys(s.byStrategy);
+    $('strategy-empty').style.display=keys.length?'none':'block';
+    $('strategy-tbody').innerHTML=keys.map(k=>{
+      const d=s.byStrategy[k];
+      return `<tr><td>${esc(k)}</td><td class="num-cell">${d.count}</td><td class="num-cell">${d.count?Math.round(d.wins/d.count*100):0}%</td><td class="num-cell">${esc(fmtINR(d.net))}</td></tr>`;
+    }).join('');
+
+    $('flagged-empty').style.display=s.flagged.length?'none':'block';
+    $('flagged-list').innerHTML=s.flagged.map(t=>`
+      <div class="flag-item">
+        <div class="flag-top"><span>${esc(fmtDate(t.date))} <span class="flag-strategy">· ${esc(t.strategy)}</span></span><span class="flag-pnl">${esc(fmtINR(t.pnl))}</span></div>
+        <div class="flag-reason">${esc(reasonsForFlag(t))}</div>
+      </div>`).join('');
+  }
+
+  function renderLogTable(){
+    const sorted=[...trades].sort((a,b)=>b.date.localeCompare(a.date)||b.id.localeCompare(a.id));
+    $('log-empty').style.display=sorted.length?'none':'block';
+    $('log-tbody').innerHTML=sorted.map(t=>{
+      const ok=isRuleFollowed(t);
+      const cls=t.outcome==='win'?'win':(t.outcome==='loss'?'loss':'be');
+      return `
+      <tr class="log-row" data-id="${t.id}">
+        <td>${esc(fmtDate(t.date))}</td><td>${esc(t.strategy)}</td><td>${esc(t.instrument||'—')}</td>
+        <td><span class="dot ${cls}"></span>${esc(t.outcome)}</td>
+        <td class="num-cell">${esc(fmtINR(t.pnl))}</td>
+        <td><span class="rule-tag ${ok?'ok':'no'}">${ok?'Followed':'Broken'}</span></td>
+        <td class="row-actions"><button data-act="edit" data-id="${t.id}">Edit</button><button data-act="del" data-id="${t.id}">Delete</button></td>
+      </tr>
+      <tr class="detail-row" id="detail-${t.id}" style="display:none;"><td colspan="7">
+        <div class="detail-grid">
+          <div><span>Position size: </span>${esc(t.positionSize||'—')}</div>
+          <div><span>Premium/credit: </span>${t.premium?esc(fmtINR(t.premium)):'—'}</div>
+          <div><span>Max planned loss: </span>${t.maxPlannedLoss?esc(fmtINR(t.maxPlannedLoss)):'—'}</div>
+          <div><span>Exit reason: </span>${esc(t.exitReason||'—')}</div>
+          <div><span>Stop breach: </span>${t.breached?esc(breachLabel(t)+' (monitored live)'):'none'}</div>
+          <div><span>Tags: </span>${esc(t.tags||'—')}</div>
+          <div style="grid-column:1/-1;"><span>Exit plan written: </span>${esc(t.exitPlan||'—')}</div>
+          <div style="grid-column:1/-1;"><span>Notes: </span>${esc(t.emotionalNotes||'—')}</div>
+          ${ok?'':`<div style="grid-column:1/-1;"><span>Why flagged: </span>${esc(reasonsForFlag(t))}</div>`}
+        </div></td></tr>`;
+    }).join('');
+
+    $('log-tbody').querySelectorAll('tr.log-row').forEach(row=>{
+      row.addEventListener('click',e=>{
+        if(e.target.closest('button'))return;
+        const d=$('detail-'+row.getAttribute('data-id'));
+        d.style.display=d.style.display==='none'?'table-row':'none';
+      });
+    });
+    $('log-tbody').querySelectorAll('button[data-act="edit"]').forEach(b=>b.addEventListener('click',()=>startEdit(b.getAttribute('data-id'))));
+    $('log-tbody').querySelectorAll('button[data-act="del"]').forEach(b=>b.addEventListener('click',()=>deleteTrade(b.getAttribute('data-id'))));
+  }
+
+  function renderReviews(){
+    const sorted=[...reviews].sort((a,b)=>b.date.localeCompare(a.date));
+    $('review-empty').style.display=sorted.length?'none':'block';
+    $('review-list').innerHTML=sorted.map(r=>`
+      <div class="review-entry">
+        <button class="review-del" data-id="${r.id}">Delete</button>
+        <div class="review-date">${esc(fmtDate(r.date))}</div>
+        <div class="review-text">${esc(r.text)}</div>
+      </div>`).join('');
+    $('review-list').querySelectorAll('.review-del').forEach(b=>b.addEventListener('click',()=>deleteReview(b.getAttribute('data-id'))));
+  }
+
+  function renderAll(){renderLive();renderDashboard();renderLogTable();renderReviews();}
+
+  // ---------- forms ----------
+  function checklistPreview(){
+    const c={m:$('c-maxloss').checked,e:$('c-exit').checked,s:$('c-size').checked,y:$('c-system').checked};
+    const bad=['Held past my planned exit','Exited early from fear or hope'].includes($('f-exitreason').value);
+    const breached=!!(pendingLocked&&pendingLocked.breached);
+    const ok=c.m&&c.e&&c.s&&c.y&&!bad&&!breached;
+    const el=$('flag-preview');
+    el.textContent=ok?'This will log as: rules followed':'This will log as: rule broken';
+    el.className='flag-preview'+(ok?'':' warn');
+  }
+  ['c-maxloss','c-exit','c-size','c-system'].forEach(id=>$(id).addEventListener('change',checklistPreview));
+  $('f-exitreason').addEventListener('change',checklistPreview);
+  function updatePnlHint(){
+    const v=Math.abs(Number(String($('f-pnl').value).replace(/[^0-9.]/g,'')||0));
+    const o=$('f-outcome').value;
+    const el=$('pnl-hint');
+    if(!v){el.textContent='Enter it as a plain number. Whether it counts as a gain or a loss comes from the Outcome you picked above.';return;}
+    el.textContent='This will be recorded as '+fmtINR(o==='loss'?-v:v)+'.';
+  }
+  $('f-pnl').addEventListener('input',updatePnlHint);
+  $('f-outcome').addEventListener('change',updatePnlHint);
+
+  function renderCalc(){
+    const credit=$('p-credit').value===''?null:Number($('p-credit').value);
+    const structMax=$('p-structmax').value===''?null:Number($('p-structmax').value);
+    const r=computeStop(credit,structMax);
+    const ansEl=$('calc-answer'),capsEl=$('calc-caps'),noteEl=$('calc-note'),costEl=$('calc-cost');
+    if(!r.stop){
+      ansEl.textContent='—';
+      capsEl.innerHTML='<div class="cap-row">Set your capital under "My rules", or enter the credit received, and this will compute your stop.</div>';
+      noteEl.textContent='';costEl.textContent='';
+      return r;
+    }
+    ansEl.textContent=fmtINR(-r.stop);
+    capsEl.innerHTML=r.caps
+      .slice().sort((a,b)=>a.value-b.value)
+      .map(c=>`<div class="cap-row ${c===r.binding?'binding':''}"><span>${esc(c.label)}${c===r.binding?'<span class="cap-tag">binding</span>':''}</span><span class="cap-val">${esc(fmtINR(-Math.round(c.value)))}</span></div>`).join('');
+    const b=r.baselines;
+    costEl.innerHTML=b.perDay>0
+      ? `A loss of ${esc(fmtINR(-r.stop))} costs you ${(r.stop/b.perDay).toFixed(1)} trading days at your current average of ${esc(fmtINR(b.perDay))} per day.`
+      : 'Log a few trades and this will show what the stop costs you in trading days.';
+    const entered=$('p-maxloss').value===''?null:Math.abs(Number($('p-maxloss').value));
+    if(entered&&entered>r.stop*1.001){
+      noteEl.className='calc-note warn';
+      noteEl.textContent=`Your stop of ${fmtINR(-entered)} is wider than your own rule allows. Either reduce the stop, or reduce the position size until ${fmtINR(-r.stop)} is the real worst case.`;
+    }else{
+      noteEl.className='calc-note';
+      noteEl.textContent='This is the smallest of every cap that applies. The strict rule is that the smallest one always wins.';
+    }
+    return r;
+  }
+  $('btn-use-stop').addEventListener('click',()=>{
+    const r=renderCalc();
+    if(r.stop){$('p-maxloss').value=r.stop;posPreview();renderCalc();}
+  });
+
+  // ---------- alerts: audio, notifications, check-in timer ----------
+  let audioCtx=null, alertMode={sound:false,notif:'not asked'}, dismissedUntil={}, lastAlertAt={};
+
+  function initAudio(){
+    try{
+      if(!audioCtx){const C=window.AudioContext||window.webkitAudioContext;if(C)audioCtx=new C();}
+      if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume();
+      if(audioCtx)alertMode.sound=true;
+    }catch(e){alertMode.sound=false;}
+  }
+  function chime(kind){
+    if(!audioCtx)return;
+    try{
+      const t=audioCtx.currentTime;
+      const notes=kind==='violation'?[880,622,880,622,880]:[587,784];
+      notes.forEach((f,i)=>{
+        const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+        o.type='sine';o.frequency.value=f;
+        const s=t+i*0.24;
+        g.gain.setValueAtTime(0,s);
+        g.gain.linearRampToValueAtTime(kind==='violation'?0.3:0.18,s+0.02);
+        g.gain.exponentialRampToValueAtTime(0.0008,s+0.22);
+        o.connect(g);g.connect(audioCtx.destination);
+        o.start(s);o.stop(s+0.24);
+      });
+    }catch(e){}
+  }
+  function buzz(kind){
+    try{if(navigator.vibrate)navigator.vibrate(kind==='violation'?[120,70,120,70,120]:[90]);}catch(e){}
+  }
+  function notify(title,body){
+    try{
+      if(typeof Notification!=='undefined'&&Notification.permission==='granted')
+        new Notification(title,{body:body,tag:'trade-log'});
+    }catch(e){}
+  }
+  async function enableAlerts(){
+    initAudio();
+    try{
+      if(typeof Notification==='undefined')alertMode.notif='unavailable here';
+      else{
+        const p=await Notification.requestPermission();
+        alertMode.notif=p==='granted'?'on':p;
+      }
+    }catch(e){alertMode.notif='blocked by the browser'};
+    if(alertMode.sound)chime('ok');
+    renderAlertMode();
+  }
+  function renderAlertMode(){
+    const el=$('alert-mode');
+    const bits=[];
+    bits.push(alertMode.sound?'sound on':'sound off');
+    bits.push('desktop alerts: '+alertMode.notif);
+    el.textContent=bits.join(' · ');
+    el.className='alert-mode'+(alertMode.sound?' on':'');
+  }
+  $('btn-enable-alerts').addEventListener('click',enableAlerts);
+
+  function dueAt(p){
+    const last=latestUpdate(p);
+    const base=last?last.t:p.openedAt;
+    return base+(settings.checkInMinutes||5)*60000;
+  }
+  function nextDue(){
+    if(!positions.length)return null;
+    return positions.reduce((m,p)=>{const d=dueAt(p);return (m===null||d<m.due)?{due:d,p}:m;},null);
+  }
+  function fireAlert(p,level){
+    const ev=evalPosition(p);
+    const head=level==='violation'?'You are outside your rules right now':'Check-in due';
+    let body;
+    if(level==='violation'){
+      body=ev.reasons[0]+' It has been '+(p.firstBreachAt?fmtDur(Date.now()-p.firstBreachAt):'a moment')+
+        ' since you crossed your own line. Close it and log it.';
+    }else{
+      body='Open your broker, read the current P&L for your '+p.strategy+', and enter it. '+
+        'Checking takes three seconds. Not checking is how a small loss becomes the other kind.';
+    }
+    const bar=$('alert-bar');
+    bar.className='open'+(level==='violation'?'':' calm');
+    $('alert-head').textContent=head;
+    $('alert-body').textContent=body;
+    bar.dataset.posId=p.id;
+    chime(level);buzz(level);
+    notify(head,body);
+    try{bar.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){}
+  }
+  function clearAlert(){$('alert-bar').className='';}
+  $('alert-dismiss').addEventListener('click',()=>{
+    const id=$('alert-bar').dataset.posId;
+    if(id)dismissedUntil[id]=Date.now()+(settings.checkInMinutes||5)*60000;
+    clearAlert();
+  });
+  $('alert-goto').addEventListener('click',()=>{
+    const id=$('alert-bar').dataset.posId;
+    clearAlert();
+    const el=$('upd-'+id);
+    if(el){try{el.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}el.focus();}
+  });
+  $('s-interval').addEventListener('change',async ()=>{
+    settings.checkInMinutes=Number($('s-interval').value)||5;
+    await saveSettings();
+  });
+
+  function renderTimer(){
+    const panel=$('timer-panel');
+    if(!positions.length){panel.style.display='none';return;}
+    panel.style.display='flex';
+    $('s-interval').value=String(settings.checkInMinutes||5);
+    const nd=nextDue();
+    if(!nd)return;
+    const left=nd.due-Date.now();
+    const el=$('timer-count');
+    if(left<=0){
+      el.textContent='due now';el.className='timer-count due';
+      $('timer-lbl').textContent='enter your current P&L';
+    }else{
+      const m=Math.floor(left/60000),sec=Math.floor(left%60000/1000);
+      el.textContent=m+':'+String(sec).padStart(2,'0');
+      el.className='timer-count';
+      $('timer-lbl').textContent='until your next check-in';
+    }
+  }
+
+  function checkAlerts(){
+    const now=Date.now();
+    positions.forEach(p=>{
+      const ev=evalPosition(p);
+      const overdue=now>=dueAt(p);
+      const inViolation=ev.level==='violation';
+      if(!overdue&&!inViolation)return;
+      if(dismissedUntil[p.id]&&now<dismissedUntil[p.id])return;
+      const gap=inViolation?90000:(settings.checkInMinutes||5)*60000;
+      if(lastAlertAt[p.id]&&now-lastAlertAt[p.id]<gap)return;
+      lastAlertAt[p.id]=now;
+      fireAlert(p,inViolation?'violation':'checkin');
+    });
+  }
+
+  // ---------- behaviour tips, contextual ----------
+  const TIPS=[
+    {ctx:'pre',t:'Your edge is the butterfly, not your read on direction. If you are about to add a leg you have never tested, that is a new strategy, not a hedge.'},
+    {ctx:'pre',t:'Write the exit before the entry. If you cannot state the number out loud, you are not ready to place the trade.'},
+    {ctx:'pre',t:'A hedge improvised mid-trade is not risk management. It is a second undefined-risk position stacked on the first one.'},
+    {ctx:'pre',t:'The platform max loss is a ceiling, not a stop. Your stop is what your average win can absorb, which is far smaller.'},
+    {ctx:'pre',t:'Size down until the stop feels affordable. Widening the stop instead is the same decision that cost you 21 days of gains.'},
+    {ctx:'profit',t:'You set the target when you were calm and had nothing at stake. Closing at 40% because it feels safe is the habit that keeps your wins small.'},
+    {ctx:'profit',t:'Small wins only compound if losses stay smaller. Booking early shrinks the wins while holding losers grows the losses. Both halves matter.'},
+    {ctx:'profit',t:'Feeling the urge to lock it in early is not information about the market. It is information about your comfort.'},
+    {ctx:'watch',t:'Deciding at 70% of your stop is a decision. Deciding at 100% is a reaction.'},
+    {ctx:'watch',t:'The stop is not a prediction that you are wrong. It is the price of finding out cheaply.'},
+    {ctx:'violation',t:'You are negotiating with a number you already agreed to. The version of you who set it had no money on the line and was thinking more clearly.'},
+    {ctx:'violation',t:'Hope is not a position size. The loss so far is already paid. The only choice left is whether it gets bigger.'},
+    {ctx:'violation',t:'Every minute past your stop is a fresh decision to stay in. You are not holding a position any more, you are re-entering it every minute.'},
+    {ctx:'violation',t:'Closing now and logging it honestly is the win available to you. The trade is lost either way.'},
+    {ctx:'any',t:'Rule adherence predicts whether you last as a trader far better than any single month of profit.'},
+    {ctx:'any',t:'A profitable trade taken outside your rules is a red flag, not a win. It teaches you that breaking rules pays.'},
+    {ctx:'any',t:'Do not trade to get it back. Revenge sizing is what turns a rule-following loss into the other kind.'},
+    {ctx:'any',t:'One clean streak is not proof of an edge. It might be proof of a calm volatility regime that happened to suit your structure.'}
+  ];
+  let tipIdx=0;
+  function tipContext(){
+    if(!positions.length)return 'pre';
+    const levels=positions.map(p=>evalPosition(p).level);
+    if(levels.includes('violation'))return 'violation';
+    if(levels.includes('watch'))return 'watch';
+    if(levels.includes('target'))return 'profit';
+    const anyProfit=positions.some(p=>{const e=evalPosition(p);return e.pnl!==null&&e.pnl>0;});
+    return anyProfit?'profit':'pre';
+  }
+  function renderTip(advance){
+    const ctx=tipContext();
+    const pool=TIPS.filter(x=>x.ctx===ctx||x.ctx==='any');
+    if(advance)tipIdx++;
+    const tip=pool[((tipIdx%pool.length)+pool.length)%pool.length];
+    $('tip-text').textContent=tip.t;
+    const labels={pre:'before you enter',profit:'while you are in profit',watch:'approaching your stop',violation:'you are past your stop'};
+    $('tip-ctx').textContent=labels[ctx]||'';
+  }
+  $('btn-next-tip').addEventListener('click',()=>renderTip(true));
+
+  function posPreview(){
+    const el=$('pos-preview');
+    const problems=[];
+    if(!$('p-maxloss').value)problems.push('no stop');
+    if(!$('p-target').value)problems.push('no profit target');
+    if(!$('p-exitrule').value.trim())problems.push('no exit rule');
+    if(!$('p-sized').checked)problems.push('not sized per rules');
+    if(!$('p-system').checked)problems.push('outside tested system');
+    if(problems.length){el.textContent='This opens already in violation: '+problems.join(', ');el.className='flag-preview warn';}
+    else{el.textContent='This opens inside your rules';el.className='flag-preview';}
+  }
+  ['p-maxloss','p-target','p-exitrule','p-credit','p-structmax'].forEach(id=>$(id).addEventListener('input',()=>{posPreview();renderCalc();}));
+  ['p-sized','p-system'].forEach(id=>$(id).addEventListener('change',posPreview));
+
+  // ---------- settings ----------
+  function fillSettingsForm(){
+    $('s-capital').value=settings.capital??'';
+    $('s-riskpct').value=settings.riskPct??2;
+    $('s-winmult').value=settings.winMult??1.5;
+    $('s-creditmult').value=settings.creditMult??1.5;
+    $('s-maxdaily').value=settings.maxDaily??'';
+    $('s-monthbudget').value=settings.monthlyBudget??'';
+    $('s-holdwindow').value=settings.holdWindow||'same-day';
+  }
+  $('btn-save-settings').addEventListener('click',async ()=>{
+    settings={
+      capital:$('s-capital').value===''?null:Number($('s-capital').value),
+      riskPct:Number($('s-riskpct').value)||0,
+      winMult:Number($('s-winmult').value)||0,
+      creditMult:Number($('s-creditmult').value)||0,
+      maxDaily:$('s-maxdaily').value===''?null:Number($('s-maxdaily').value),
+      monthlyBudget:$('s-monthbudget').value===''?null:Number($('s-monthbudget').value),
+      checkInMinutes:settings.checkInMinutes||5,
+      holdWindow:$('s-holdwindow').value
+    };
+    await saveSettings();
+    const st=$('settings-status');
+    st.textContent='Saved. The calculator now uses these.';st.className='status-line';
+    renderCalc();renderCostTable();renderDashboard();
+  });
+
+  function renderCostTable(){
+    const b=baselines();
+    const el=$('cost-table');
+    if(b.perDay<=0){el.innerHTML='';$('cost-empty').style.display='block';return;}
+    $('cost-empty').style.display='none';
+    const rows=[b.avgWin,b.avgWin*2,b.avgWin*5,b.avgWin*10,b.largestLoss].filter(v=>v>0);
+    el.innerHTML=`<table class="strat-table"><thead><tr><th>A loss of</th><th class="num-cell">Average wins erased</th><th class="num-cell">Trading days to recover</th></tr></thead><tbody>`+
+      rows.map(v=>`<tr><td>${esc(fmtINR(-Math.round(v)))}${Math.abs(v-b.largestLoss)<1?' <span style="color:var(--rust);">(your largest so far)</span>':''}</td><td class="num-cell">${(v/b.avgWin).toFixed(1)}</td><td class="num-cell">${(v/b.perDay).toFixed(1)}</td></tr>`).join('')+
+      `</tbody></table>`;
+  }
+
+  function renderAsymmetry(){
+    const b=baselines();
+    const grid=$('asym-grid'),diag=$('asym-diagnosis');
+    if(!trades.length){
+      grid.innerHTML='<div class="asym-item"><div class="asym-lbl">Log trades and this panel measures whether you are cutting winners early and holding losers.</div></div>';
+      diag.textContent='';return;
+    }
+    const ratio=b.avgLoss>0?b.avgWin/b.avgLoss:null;
+    const heldPast=trades.filter(t=>t.exitReason==='Held past my planned exit').length;
+    const heldPastPct=trades.length?heldPast/trades.length*100:0;
+    const earlyExits=trades.filter(t=>t.exitReason==='Exited early from fear or hope'&&Number(t.pnl)>0).length;
+    const overshoot=trades.filter(t=>t.maxPlannedLoss&&Number(t.pnl)<0&&Math.abs(Number(t.pnl))>Math.abs(t.maxPlannedLoss)).length;
+    const erasedByWorst=b.avgWin>0?b.largestLoss/b.avgWin:0;
+    const cls=(good,mid)=>good?'good':(mid?'mid':'bad');
+    grid.innerHTML=`
+      <div class="asym-item"><div class="asym-val ${ratio===null?'':cls(ratio>=1,ratio>=0.7)}">${ratio===null?'—':ratio.toFixed(2)+'×'}</div>
+        <div class="asym-lbl">Average win ÷ average loss</div>
+        <div class="asym-note">${b.avgWin?esc(fmtINR(b.avgWin)):'—'} win vs ${b.avgLoss?esc(fmtINR(b.avgLoss)):'—'} loss. Below 1.0 means your losses are individually bigger than your wins.</div></div>
+      <div class="asym-item"><div class="asym-val ${cls(erasedByWorst<=2,erasedByWorst<=4)}">${erasedByWorst?erasedByWorst.toFixed(1):'—'}</div>
+        <div class="asym-lbl">Wins erased by your worst loss</div>
+        <div class="asym-note">Your largest loss so far was ${b.largestLoss?esc(fmtINR(-b.largestLoss)):'—'}.</div></div>
+      <div class="asym-item"><div class="asym-val ${cls(overshoot===0,overshoot<=1)}">${overshoot}</div>
+        <div class="asym-lbl">Losses that blew past your own max</div>
+        <div class="asym-note">Trades where the realised loss exceeded the max loss you had planned.</div></div>
+      <div class="asym-item"><div class="asym-val ${cls(heldPastPct<5,heldPastPct<15)}">${Math.round(heldPastPct)}%</div>
+        <div class="asym-lbl">Trades held past the planned exit</div>
+        <div class="asym-note">${heldPast} of ${trades.length}. ${earlyExits} winner${earlyExits===1?'':'s'} booked early from fear or hope.</div></div>`;
+
+    const notes=[];
+    const wr=trades.length?trades.filter(t=>Number(t.pnl)>0).length/trades.length:0;
+    const expectancy=wr*b.avgWin-(1-wr)*b.avgLoss;
+    const breaks=trades.filter(t=>!isRuleFollowed(t)).length;
+
+    if(breaks===0&&overshoot===0&&earlyExits===0){
+      notes.push('Every trade here was taken inside your own rules. That is the number that matters on this panel.');
+      if(ratio!==null&&ratio<1&&expectancy>0)
+        notes.push('Your average loss is larger than your average win, but at a '+Math.round(wr*100)+'% win rate that still works out to about '+fmtINR(expectancy)+' expected per trade. This is the normal shape of a premium-selling book, not a problem to fix — it only becomes one if a loss is ever allowed to run past your stop.');
+      else if(ratio!==null&&ratio>=1)
+        notes.push('Your wins are also individually larger than your losses, which gives you room to be wrong more often.');
+    }else{
+      if(overshoot>0)notes.push(overshoot+' loss'+(overshoot===1?'':'es')+' went past the max you had planned. That is the pattern in your own data, not a theory.');
+      if(earlyExits>0)notes.push(earlyExits+' winner'+(earlyExits===1?'':'s')+' closed early from fear or hope. Cutting winners short is the other half of the same bias.');
+      if(ratio!==null&&ratio<0.7)notes.push('With losses averaging '+(1/ratio).toFixed(1)+' times your wins, one unmanaged trade can undo a long stretch of good ones.');
+      if(!notes.length)notes.push(breaks===1
+        ?'One trade fell outside your rules. Look at what was different about it rather than at the money.'
+        :breaks+' trades fell outside your rules. Look at what they had in common rather than at the money.');
+    }
+    diag.textContent=notes.join(' ');
+  }
+
+  function resetForm(keepLocked){
+    editingId=null;
+    $('trade-form').reset();
+    $('f-date').value=new Date().toISOString().slice(0,10);
+    $('btn-submit').textContent='Log entry';
+    $('btn-cancel-edit').style.display='none';
+    if(!keepLocked){pendingLocked=null;$('locked-note').style.display='none';}
+    checklistPreview();
+  }
+
+  function startEdit(id){
+    const t=trades.find(x=>x.id===id);if(!t)return;
+    resetForm();
+    editingId=id;
+    $('f-date').value=t.date;$('f-strategy').value=t.strategy;$('f-instrument').value=t.instrument||'';
+    $('f-size').value=t.positionSize||'';$('f-premium').value=t.premium??'';$('f-maxloss').value=t.maxPlannedLoss??'';
+    $('f-exitplan').value=t.exitPlan||'';
+    const c=t.checklist||{};
+    $('c-maxloss').checked=!!c.maxLossDefined;$('c-exit').checked=!!c.exitWritten;
+    $('c-size').checked=!!c.sizedPerRules;$('c-system').checked=!!c.withinTestedSystem;
+    $('f-outcome').value=t.outcome;$('f-pnl').value=t.pnl;
+    $('f-exitreason').value=t.exitReason||'Booked at target as planned';
+    $('f-notes').value=t.emotionalNotes||'';$('f-tags').value=t.tags||'';
+    $('btn-submit').textContent='Update entry';
+    $('btn-cancel-edit').style.display='inline-block';
+    checklistPreview();switchTab('new');
+  }
+
+  async function deleteTrade(id){
+    const ok=await askConfirm('Delete this entry?','This removes the trade from your journal permanently. Deleting a flagged trade also removes it from your adherence figure.','Delete');
+    if(!ok)return;
+    trades=trades.filter(t=>t.id!==id);
+    await saveTrades();renderDashboard();renderLogTable();
+  }
+  async function deleteReview(id){
+    const ok=await askConfirm('Delete this reflection?','This cannot be undone.','Delete');
+    if(!ok)return;
+    reviews=reviews.filter(r=>r.id!==id);
+    await saveReviews();renderReviews();
+  }
+
+  $('pos-form').addEventListener('submit',async e=>{
+    e.preventDefault();
+    initAudio();renderAlertMode();
+    positions.push({
+      id:uid(),openedAt:Date.now(),
+      strategy:$('p-strategy').value,
+      instrument:$('p-instrument').value.trim(),
+      positionSize:$('p-size').value.trim(),
+      credit:$('p-credit').value===''?null:Number($('p-credit').value),
+      maxLoss:$('p-maxloss').value===''?null:Math.abs(Number($('p-maxloss').value)),
+      target:$('p-target').value===''?null:Math.abs(Number($('p-target').value)),
+      structMax:$('p-structmax').value===''?null:Number($('p-structmax').value),
+      structMaxProfit:$('p-structmaxprofit').value===''?null:Number($('p-structmaxprofit').value),
+      probOfProfit:$('p-prob').value===''?null:Number($('p-prob').value),
+      plannedExitTime:$('p-exittime').value||null,
+      exitRule:$('p-exitrule').value.trim(),
+      sizedPerRules:$('p-sized').checked,
+      withinTestedSystem:$('p-system').checked,
+      updates:[],firstBreachAt:null
+    });
+    await savePositions();
+    $('pos-form').reset();posPreview();renderCalc();renderLive();
+  });
+
+  $('trade-form').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const t={
+      id:editingId||uid(),
+      date:$('f-date').value,strategy:$('f-strategy').value,
+      instrument:$('f-instrument').value.trim(),positionSize:$('f-size').value.trim(),
+      premium:$('f-premium').value===''?null:Number($('f-premium').value),
+      maxPlannedLoss:$('f-maxloss').value===''?null:Number($('f-maxloss').value),
+      exitPlan:$('f-exitplan').value.trim(),
+      checklist:{
+        maxLossDefined:$('c-maxloss').checked,exitWritten:$('c-exit').checked,
+        sizedPerRules:$('c-size').checked,withinTestedSystem:$('c-system').checked
+      },
+      outcome:$('f-outcome').value,
+      pnl:($('f-outcome').value==='loss'?-1:1)*Math.abs(Number(String($('f-pnl').value).replace(/[^0-9.]/g,'')||0)),
+      exitReason:$('f-exitreason').value,
+      emotionalNotes:$('f-notes').value.trim(),tags:$('f-tags').value.trim(),
+      breachMinutes:0
+    };
+    if(pendingLocked){
+      t.breachMinutes=pendingLocked.breachMinutes;
+      t.breached=!!pendingLocked.breached;
+      t.breachSeconds=pendingLocked.breachSeconds||0;
+      t.checklist=pendingLocked.checklist;
+      t.target=pendingLocked.target||null;
+      t.probOfProfit=pendingLocked.probOfProfit??null;
+    }
+    if(editingId){
+      const i=trades.findIndex(x=>x.id===editingId);
+      if(i>-1){t.breachMinutes=trades[i].breachMinutes||0;t.breached=!!trades[i].breached;t.breachSeconds=trades[i].breachSeconds||0;trades[i]=t;}
+    }else trades.push(t);
+    if(pendingLocked&&pendingLocked.positionId){
+      delete dismissedUntil[pendingLocked.positionId];delete lastAlertAt[pendingLocked.positionId];
+      positions=positions.filter(p=>p.id!==pendingLocked.positionId);
+      clearAlert();
+      await savePositions();
+    }
+    await saveTrades();
+    resetForm();renderAll();switchTab('log');
+  });
+
+  $('btn-cancel-edit').addEventListener('click',()=>{resetForm();switchTab('log');});
+  $('btn-log-new').addEventListener('click',()=>{resetForm();switchTab('new');});
+
+  $('review-form').addEventListener('submit',async e=>{
+    e.preventDefault();
+    reviews.push({id:uid(),date:$('r-date').value,text:$('r-text').value.trim()});
+    await saveReviews();
+    $('review-form').reset();
+    $('r-date').value=new Date().toISOString().slice(0,10);
+    renderReviews();
+  });
+
+  // ---------- data block ----------
+  function buildCSV(){
+    const headers=['date','strategy','instrument','positionSize','premium','maxPlannedLoss','exitPlan','maxLossDefined','exitWritten','sizedPerRules','withinTestedSystem','outcome','pnl','exitReason','breached','breachSeconds','ruleFollowed','notes','tags'];
+    const rows=[...trades].sort((a,b)=>a.date.localeCompare(b.date)).map(t=>{
+      const c=t.checklist||{};
+      return [t.date,t.strategy,t.instrument,t.positionSize,t.premium,t.maxPlannedLoss,t.exitPlan,
+        c.maxLossDefined,c.exitWritten,c.sizedPerRules,c.withinTestedSystem,t.outcome,t.pnl,t.exitReason,
+        !!t.breached,t.breachSeconds||0,isRuleFollowed(t),t.emotionalNotes,t.tags]
+        .map(v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"').join(',');
+    });
+    return [headers.join(','),...rows].join('\n');
+  }
+  $('btn-csv').addEventListener('click',()=>{$('csv-out').value=buildCSV();$('csv-out').select();});
+  $('btn-csv-dl').addEventListener('click',downloadCSV);
+  $('btn-file-save').addEventListener('click',chooseSaveFile);
+  $('btn-file-open').addEventListener('click',openExistingFile);
+  $('btn-download').addEventListener('click',downloadBackup);
+  $('file-input').addEventListener('change',loadFromInput);
+  $('btn-json').addEventListener('click',()=>{
+    $('json-out').value=JSON.stringify({trades,reviews,positions,settings},null,2);$('json-out').select();
+  });
+  $('btn-restore').addEventListener('click',async ()=>{
+    const st=$('data-status');
+    let data;
+    try{data=JSON.parse($('json-in').value);}
+    catch(e){st.textContent='That is not valid JSON. Paste the whole backup, including the outer braces.';st.className='status-line err';return;}
+    if(!data||!Array.isArray(data.trades)){st.textContent='Backup is missing a "trades" list, so nothing was changed.';st.className='status-line err';return;}
+    const ok=await askConfirm('Replace everything?','Restoring overwrites all current trades, reflections and open positions with the contents of this backup.','Restore');
+    if(!ok)return;
+    trades=data.trades;reviews=Array.isArray(data.reviews)?data.reviews:[];positions=Array.isArray(data.positions)?data.positions:[];
+    if(data.settings&&typeof data.settings==='object')settings={...DEFAULT_SETTINGS,...data.settings};
+    await saveKey();
+    fillSettingsForm();renderCalc();renderCostTable();
+    renderAll();
+    st.textContent='Restored '+trades.length+' trades and '+reviews.length+' reflections.';st.className='status-line';
+  });
+  $('btn-reset').addEventListener('click',async ()=>{
+    const ok=await askConfirm('Clear the whole journal?','Every trade, reflection and open position is deleted. Copy your backup first if you might want this data later.','Clear everything');
+    if(!ok)return;
+    trades=[];reviews=[];positions=[];settings={...DEFAULT_SETTINGS};
+    await saveTrades();await saveReviews();await savePositions();await saveSettings();
+    fillSettingsForm();renderCalc();renderCostTable();renderAll();
+    $('data-status').textContent='Journal cleared.';$('data-status').className='status-line';
+  });
+
+  // ---------- tabs ----------
+  function switchTab(name){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('data-tab')===name));
+    document.querySelectorAll('.botnav-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('data-tab')===name));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+name));
+    if(name==='live')renderLive();
+    if(name==='dashboard')renderDashboard();
+    if(name==='rules'){fillSettingsForm();renderCostTable();}
+  }
+  document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>switchTab(b.getAttribute('data-tab'))));
+  document.querySelectorAll('.botnav-btn').forEach(b=>b.addEventListener('click',()=>{
+    switchTab(b.getAttribute('data-tab'));
+    try{window.scrollTo({top:0,behavior:'smooth'});}catch(e){}
+  }));
+
+  // ---------- installable app manifest (kept inline, no second file) ----------
+  (function installManifest(){
+    try{
+      const m={name:'Trade Log',short_name:'Trade Log',description:'Live rule monitor and discipline journal',
+        start_url:location.pathname,scope:'./',display:'standalone',orientation:'portrait-primary',
+        background_color:'#0F141A',theme_color:'#0F141A',
+        icons:[{src:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAADgklEQVR42u3bv2oUQRzA8bklraQ5CCSpgkVKH8QHEKx9A8uACCntLK0FH8DSIo9gmSpVUgRS+AgWB0c0ybE3O392dj5fLC+5cPfhN7O74+pwfRyk2AYfgQASQAJIAEkACSABJIAkgASQANJCOyj/lqdn5z73fN3eXJd8u1WZp/HQLBVTXkDPunm4v/PV5mt9dFJSUi5A/9GBZg6YcjBKD+gxHW7mxii5ocSAtnrQ6YRRSkD0NMQolaE0gNBpkVESQwkA0dPzKBro6bPt9zXxFt1AD0NTDA0J/w61a6gCoA1bepZhKHoIDfRoiqEhWo+WV8Q3O0xkq843Q0McUnosZMmuwtRz+wEyfgwhE0j1JpAUD8j6ZRUzgWQJE0DqDpANkG2QCSRLmAASQBJAAkgAKXE/L9+UfLsDnzgfAPEBECJtBlB7Pt5e/AaIjzZ8ADTH9aUtIgDxARAfANmCAMSHqgLiA6D6IQIQHwDxoRBC4eMc9AAkASSABJAAEkA+AgGkajlQNq/eXb7f/YIfF99NIEXqGfkagGQPJIAkgASQABJAEkACSAAJIAkgAaTKOc4xtuYOWphALekJ8ztoAZAAEkASQAJIAAkg6Z/cSMxYD/ceTaBqesIi7j0CJIAEkACSqzAXO+ptAjloAZAAEkASQAJIAAkgaVSdHudw79EEyqgnuPcIkAASQAJIaukqzPWRCeT6CCAJIAEkgASQBJAAEkACSAJIAAkgASSAJIAEkAASQBJAAkgACSBpZ0X/X9j66KTW7+nqRx7u70ygF/v19cqPWMIiP52nL4j7kVd/Xu/+V+sPa0tPCGF1uD4e87rTs/PCszFfHz5+GvOyb18+d7uz2ayStzfXNtGyBxJAAkgCSAAJIAEkASSABJAAEkASQJotoM2T/VRHCjXnxp/lMIFkCctTz6fJAJqKg57xjT3SumlJB1s1fQNkCVONJcy1mPETCWivXy0TyBDqbvxkB2QILbt9v98h+j0Moc53P67ClGBDEgnIELJ4TZ1ADHW+eCVYwhjqXE+yPRBDfepJAGj79gx1qCfs+zD1pTYPWYPnrE1dcyW5pZcGEEZ96kkMiKEm6ISkjxMSA3psCKNl08kF6CkjkuZAJ+R5jpkL0LOMYCqPJmR+/p0X0G5Jyl2BoxOFAMG0JDSVAWlJOc4hgASQABJAEkACSAAJIAkgAaQZ9xd9+VvgLP5kqwAAAABJRU5ErkJggg==',sizes:'192x192',type:'image/png',purpose:'any maskable'},
+               {src:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAKrklEQVR42u3dIW9bVxjH4WvL3MRSJCcoKHAfYWBwZKxSNbbCscJIVaXAssGWTZHCRgoL9hEGg4ISECkfYmy1YvvOce695z3nfR62AS+67f6/e66TeLZcrTsA8pm7BAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgBAVAuX4Ghn5xcuAhR3f3frIhxntlytXQVzD6ogAFh8EAMBsPuAGAiA3QeUQADs/ndPjw/+AkFxq5NTJRCAcaff3EPDVciZgXQBeNHuG31IFYNsGUgUgAOn3+hD8hLkyUCKABwy/XYflCBbBtoPwP+uv+kHJciZgZYD0D/9dh9InoE2A2D6gcFL0F4GGgxAz/qbfuA1GWisAU0FwPQDjgIZA2D9AUeBjAHYt/6mHxgpAw00oPoAmH7AUSBjAKw/4ChwtIo/E9j6A1Paty31/jL5Wk8AO6+46QdKHQVqPAdUeQKw/kC0o0CN54D6AmD9AQ0YRGWPgLavr+kHSqn9WVBNJwDrDzgHZDwBWH+goqNAFeeAOk4A1h+o6yhQxTmgggBYf0ADMgbA+gMakDEA1h+oXeQGzCu6atYfqO4QELkBc39gAGM3QADc/gNJGxDzEBAxANYf0ICMAbD+gAbkPQEAkC4Abv8Bh4CMAbD+gAbkPQFYf4B0Aaj3QzUBKj0EzGu5XgAtNUAA3P4DSUXYvXnAq+D2H8hwCCjegHn8awTQagNSB8DDHyCzshsY6wTg9h9wCEgRALf/AAWXMNAJwO0/4BCQNAAApAjAs1OP238g7SGg1FMgJwAAJ4Byt/8AyRVZxRAnAM9/gGwi7J5HQABJFQiAt38BugBvBTsBADgBACAA4/H8B2DfBk78FMgJAMAJAAABGImf/wKIs5MlTwDeAAAouIQeAQEkJQAAAgCAAIzBTwAA7FTqpwGcAACcAAAQAAAEAAABAEAAXsq3AAH0KPKNQE4AAE4AAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAwGt8vfrBRei3cAkA+y4AAMZdAADsuwAAGHcBAOy7fRcAwL4jAIBxRwAA+44AAMYdAQDsOwIA9p3B/Hz5j4sgAGDcjTsCAPbdviMAYN+NOwKAcce+IwDYd+w7AoBxN+4IANh3+44AgH037ggAGHf7jgBg37HvCADGHeOOAGDf7TsIAPbduIMAYNztOwgA9t2+gwAYd4w7CIB9x76DAGDfAQHAuAMCgH0HBADjDggA9h0QAPsOIADGHUAA7DuAABh3AAGw7wA7zV0C6w8IAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgBA13XdwiUADvTm6u0gr3Nzee1iCgCQa/o3X00GivMICJh0/cd+WQQAAAEAot6nOwQIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAADpLVwC2OfN1dtBXufm8trFRAAg1/RvvpoMEI1HQDDu+o/9siAAAAgARL1PdwhAAAAQAAAEAAABAEAAABAAAAQAAAEAQAAAEAAABAAAAQBAAAAEAAABAEAAABAAAAQAgGYsXAIIbqgPkry5vHYxEQDINf2bryYD/McjIEix/mO/LAIAgAAAUe/THQIQAAABAEAAABAAAAQAAAEAQAAAEAAABAAAAQBAAAAQAAAi8HkAfOeDR0AAMP0DvJoMQHAeAeGDR0AAABAA3P47BIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAAcBgfCk84Q32OmE+lBwEg3fRvvpoMwD4eAdHm+o/9siAAAAgARL1PdwgAAQBAAAAEwCUAEAAABAAAAQBAAAAQAAAEAAABAEAAABAAAAQAgCh8IEx5PgALEADTP8CryQBwII+AGln/sV8WEAAABICo9+kOAYAAACAAAAgAAAIAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAACAAAAgCAAAAgAAAIAAACAIAAACAAAIS3cAn6rU5OfdkNfCUuSM4L8vT4YMScAML59sffQV48yFfigrggCADt/B8V5CtxQVwQBCDFUh/3mkG+EhfEBWFis+VqPcF/5uz8YvMfK3owN8Gj0p9+/zHI/1FBvpJffv1tkC/jrz+/tHFB/A05Wl3vATxbm/u7WwFoPwAMPv3DZoB6CUA/j4Boef3He1logAAAJOXnAJo6Qtbr3fsPo54tPn/66CKDEwAAAgAgAAAIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgCAAAAgAAAIAAACAIAAACAAAAgAAAIAgAAAIAAACAAAAgAgAAAIAAACAIAAACAAAAgAAAIAgADsc393u/mPq5NTlx5g3yo+20wnAAAEAAABAEAAABAAAAQAgMIB8J2gADsV+R5QJwAAJwAABAAAARiYtwHY5/Onj5W+OLxSqTcAnACQFnACgBaX2vpDj9lytZ7yv3d2fvHs3zw9PvhjYNO79x+sP0lsPwmf8hHQ1AHYboAAAAIw/fp3HgEBpFU+AL4XCHD7nyUAE59xAKow/TZ6BASQVIgAeAoEZBNh98oEwFMggOKrGOURkEMA4PY/SwAcAgDK7qE3gQEy3v4XDoBfDgpQ8HGIEwBAxtv/8gFwCADc/jsBaADg9j9ZAHw7EOD23wnAIQBw+58sAA4BgNt/JwCHAMDtf7IAbMdQA4BW1z/IYw8/BwBQ+H5XABwCgBS3/3HEOgFoAND2+of6nhePgAAyrn/EADgEAOQ9AWgA4PY/aQA0ALD+eQNw4DUFsP4NBmDnJdMAwH1qihOA3xEE1L7+kXcs+iMgbwYA1j9pADQAsP55A6ABgPUfw2y5Wtdylc/OL7b/5dPjg79/gPVv9gTQc00dBQDr334ANACw/nkDoAGA9R9KTe8BbPJ+ABBn+rs6f26p1gDsa4AMANb/QBV/HsC+K+5xEGD9Gz8B9J8DHAUA0994APozoAGA9W88AI4CwGTT37XyqyrbCYAGAKY/bwBkABhv+rvmfkd9gwHob4AMAKa/5QDIADDU9HftfjhVywE4JANKAKY/4fRnCcAhDZABsPuppj9RAA7PgBJA8t3vMn0aeaIAvCgDYgDZdj/V9CcNwHElEANodfRzTn/2AByXAUmA2rfe9AvAkCUAqpN59wVACcDuC4AAKAEYfQFAD8DoCwCSALZeAABo0dwlABAAAAQAAAEAQAAAEAAABAAAAQBAAAAQAAAEAAABAEAAABAAAAQAAAEAQAAAEAAABAAAAQBAAAAQAAAEAAABABAAAAQAAAEAQAAAEAAABAAAAQBAAACowL+FZlVu0FeYAAAAAABJRU5ErkJggg==',sizes:'512x512',type:'image/png',purpose:'any'}]};
+      let url;
+      try{url=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));}
+      catch(e){url='data:application/manifest+json;charset=utf-8,'+encodeURIComponent(JSON.stringify(m));}
+      const l=document.createElement('link');l.rel='manifest';l.href=url;
+      document.head.appendChild(l);
+    }catch(e){}
+  })();
+
+  // ---------- init ----------
+  (async function init(){
+    $('f-date').value=new Date().toISOString().slice(0,10);
+    $('r-date').value=new Date().toISOString().slice(0,10);
+    checklistPreview();posPreview();
+    lsOK=testLocalStorage();
+    if(!lsOK){storageOK=false;showStorageWarn();}
+    trades=await loadKey('trades',[]);
+    reviews=await loadKey('reviews',[]);
+    positions=await loadKey('positions',[]);
+    settings={...DEFAULT_SETTINGS,...(await loadKey('settings',{}))};
+    fillSettingsForm();
+    renderCalc();renderCostTable();renderAlertMode();
+    renderAll();stampSaved();
+    if(!fsSupported())setFileStatus('This browser cannot auto-write to a file. Use "Download a backup" every week.');
+    window.addEventListener('beforeunload',()=>{try{if(lsOK)window.localStorage.setItem(LS_KEY,JSON.stringify(payload()));}catch(e){}});
+    setInterval(tick,1000);
+  })();
+})();
+</script>
+</body>
+</html>
